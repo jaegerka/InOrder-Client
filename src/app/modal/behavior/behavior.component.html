@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button (click)="previousModal()">
+            <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title style="text-align: center">How is your behavior?</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button (click)="dismissModal()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding">
+  
+    <div *ngIf="!behaviorselected">
+      <ion-button (click)="select0()" class="button">{{form[0].value}}</ion-button>
+      <ion-button (click)="select1()" class="button">{{form[1].value}}</ion-button>
+      <ion-button (click)="select2()" class="button">{{form[2].value}}</ion-button>
+      <br>
+      <br>
+      <br>
+      <ion-button class="infoButton" fill="outline" (click)="showInfo()">How do I choose?</ion-button>
+    </div>
+  
+  </ion-content>
