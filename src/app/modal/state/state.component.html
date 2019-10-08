@@ -10,27 +10,29 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <div>
+  
     <form #form="ngForm" (ngSubmit)="submitRating(form)">
-      <ion-row>
-        <ion-button class="button">Manic/Hypomanic</ion-button>
+
+        <h4 style="margin-left: 32%">Manic/Hypomanic</h4>
+      
         <bar-rating name="manicrating" [(ngModel)]="manicrating" [(rate)]="manicrate" [max]="10" [theme]="'horizontal'" [showText]="'true'" 
         [titles] = "['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']"></bar-rating>
-      </ion-row>
-
-      <ion-row>
-        <ion-button class="button">Depressed</ion-button>
+   
+      <h4 style="margin-left: 38%">Depressed</h4>
+     
         <bar-rating name="depressedrating" [(ngModel)]="depressedrating" [(rate)]="depressedrate" [max]="10" [theme]="'horizontal'" [showText]="'true'" 
         [titles] = "['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']"></bar-rating>
-      </ion-row>
+     
     </form>
 
+    <br><br>
+
     <ion-button class="infoButton" fill="outline" (click)="showInfo()">How do I choose?</ion-button>
+   
     <br><br>
-    <br><br>
-    <br><br>
+    <br>
     <ion-button class="submitbutton" type="submit" (click)="submitRating(form)">Submit</ion-button>
-  </div>
+  
 
   
 

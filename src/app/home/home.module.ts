@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 import { StateModule } from '../modal/state/state.module';
+import { FusionChartsModule } from 'angular-fusioncharts';
+// import { Chart } from 'chart.js';
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { StateModule } from '../modal/state/state.module';
     StateModule,
     FormsModule,
     ReactiveFormsModule,
+    FusionChartsModule,
     RouterModule.forChild([
       {
         path: '',

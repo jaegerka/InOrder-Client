@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalServiceService } from 'src/app/service/modalservice.service';
+import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
 import { modalController } from '@ionic/core';
 import { AlertController } from '@ionic/angular';
 

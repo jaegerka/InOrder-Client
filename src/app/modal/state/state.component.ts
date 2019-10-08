@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { EnvironmentComponent } from '../environment/environment.component'
-import { ModalServiceService } from 'src/app/service/modalservice.service';
+import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
 
 @Component({
   selector: 'app-state',
