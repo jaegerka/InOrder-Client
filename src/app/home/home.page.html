@@ -1,12 +1,102 @@
-<fusioncharts 
-  [width]="width"
-  [height]="height"
-  [type]="type"
-  [dataFormat]="dataFormat"
-  [dataSource]="dataSource">
-</fusioncharts>
-<ion-item>
-</ion-item>
-<ion-button (click)="presentModal()">
-  <ion-label>Check-in</ion-label>
-</ion-button>
+<app-navbar style="margin-bottom: 2.5%;"></app-navbar>
+
+<ion-content>
+
+    <ion-button id="switch" (click)="switchView()" style="margin-bottom: 2.5%;">
+        <ion-label *ngIf="graphview">Switch to Table</ion-label>
+        <ion-label *ngIf="tableview">Switch to Graph</ion-label>
+    </ion-button>
+
+  <div>
+      <div id="chart" class="row" *ngIf="graphview">
+        <div class="col-md-12">
+          <div style="display: block;">
+          <canvas baseChart width="100" height="50"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [colors]="lineChartColors"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+          </div>
+        </div>
+      </div>
+      <div id="table1" class="row" *ngIf="tableview">
+          <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div>
+                    <p>Date</p>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    <p>Depressed (%)</p>
+                  </div>
+                </ion-col>
+                <ion-col>
+                  <div>
+                    <p>Manic (%)</p>
+                  </div>
+                </ion-col>
+                <ion-col>
+                    <div>
+                      <p>Environment</p>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <p>Behavior</p>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <p>Comfort</p>
+                    </div>
+                  </ion-col>
+              </ion-row>
+              <ion-row *ngFor="let currentstate of currentStates">
+                  <ion-col>
+                    <div>
+                      <p>{{currentstate.date | date: 'MM/dd/yyyy'}}</p>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <p>{{currentstate.depressedpercentage}}</p>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <div>
+                      <p>{{currentstate.manicpercentage}}</p>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                      <div>
+                        <p>{{currentstate.environment}}</p>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div>
+                        <p>{{currentstate.behavior}}</p>
+                      </div>
+                    </ion-col>
+                    <ion-col>
+                      <div>
+                        <p>{{currentstate.comfort}}</p>
+                      </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+      </div>
+  </div>
+
+</ion-content>
+
+
+
+  <ion-button (click)="presentModal()">
+      <ion-label>Check-in</ion-label>
+  </ion-button>

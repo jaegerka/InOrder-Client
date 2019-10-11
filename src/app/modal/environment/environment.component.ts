@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { ComfortComponent } from '../comfort/comfort.component'
 import { StateComponent } from '../state/state.component';
-import { ModalServiceService } from 'src/app/service/modalservice.service';
+import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
 
 @Component({
   selector: 'app-environment',

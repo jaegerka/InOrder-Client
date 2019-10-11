@@ -22,9 +22,14 @@ import * as FusionCharts from 'fusioncharts';
 
 // Load FusionCharts Individual Charts
 import * as Charts from 'fusioncharts/fusioncharts.charts';
+import { NavbarModule } from './navbar/navbar.module';
+import { HomePageModule } from './home/home.module';
+import { ProfileModule } from './profile/profile.module';
 
 // Use fcRoot function to inject FusionCharts library, and the modules you want to use
 FusionChartsModule.fcRoot(FusionCharts, Charts)
+
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -42,7 +47,11 @@ FusionChartsModule.fcRoot(FusionCharts, Charts)
     BarRatingModule,
     IonicRatingModule,
     HttpClientModule,
-    FusionChartsModule
+    FusionChartsModule,
+    NavbarModule,
+    HomePageModule,
+    ProfileModule,
+    ChartsModule
   ],
   providers: [
     StatusBar,

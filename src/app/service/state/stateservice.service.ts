@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
-import { Currentstate } from '../model/currentstate'
+import { Currentstate } from '../../model/currentstate'
+
+import { Observable } from 'rxjs';
+import 'rxjs';
+import 'rxjs/add/operator/map';
+import { map } from 'rxjs-compat/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -19,10 +24,6 @@ export class StateserviceService {
     console.log("Get All States Run Successfully");
 
     return this.httpClient.get<Currentstate[]>('http://localhost:8080/currentstate/all')
-        .subscribe((data) => {
-          console.log(data);
-          return data;
-        })
-
+      .map((data: any) => { return data })
   }
 }

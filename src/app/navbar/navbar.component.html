@@ -1,3 +1,12 @@
-<p>
-  navbar works!
-</p>
+<ion-toolbar>
+ <ion-row>
+  <ion-segment>
+      <ion-segment-button value="all" [routerLink]="home"checked>
+        Home
+      </ion-segment-button>
+      <ion-segment-button value="favorites" [routerLink]="profile">
+        Profile
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+</ion-toolbar>

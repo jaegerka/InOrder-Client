@@ -1,3 +1,58 @@
 fusioncharts {
     margin: auto;
+    text-align: center;
+    margin-bottom: 0%;
+}
+
+th {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+}
+
+td {
+    width: 40px;
+    padding: 5px;
+    text-align: center;
+}
+
+table {
+    width: auto;
+    margin: auto;
+    // border: 1;
+}
+
+ion-content {
+    margin: auto;
+    text-align: center;
+    margin: 10%;
+}
+
+#switch {
+    width: auto;
+    margin: auto;
+}
+
+#chart {
+    height: 300px;
+    width: 900px;
+    margin: auto;
+}
+
+#table {
+    height: auto;
+    width: auto;
+    margin: auto;
+}
+
+p {
+    font-size: 10px;
+    text-align: center;
+    
+}
+
+ion-grid {
+    // --ion-grid-padding: 2px;
+    margin: 1%;
+    margin: auto;
 }

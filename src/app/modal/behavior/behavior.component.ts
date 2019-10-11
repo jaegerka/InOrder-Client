@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { SummaryComponent } from '../summary/summary.component';
 import { ComfortComponent } from '../comfort/comfort.component';
-import { ModalServiceService } from 'src/app/service/modalservice.service';
+import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
 
 @Component({
   selector: 'app-behavior',

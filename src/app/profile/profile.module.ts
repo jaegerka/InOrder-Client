@@ -4,15 +4,12 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { HomePage } from './home.page';
 import { StateModule } from '../modal/state/state.module';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import { Chart } from 'chart.js';
 
-import { NavbarComponent } from '../navbar/navbar.component';
+import { ProfileComponent } from '../profile/profile.component';
 import { NavbarModule } from '../navbar/navbar.module';
-
-import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -25,19 +22,12 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     FusionChartsModule,
     NavbarModule,
-    ChartsModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage
-      }
-    ])
   ],
   declarations: [
-    HomePage
+    ProfileComponent
   ],
   exports: [
-    NavbarComponent
+    ProfileComponent
 ],
 })
-export class HomePageModule {}
+export class ProfileModule {}
