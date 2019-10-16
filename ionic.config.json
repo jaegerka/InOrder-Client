@@ -1,0 +1,7 @@
+{
+  "name": "InOrder",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
