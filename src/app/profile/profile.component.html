@@ -1,1 +1,30 @@
-<h1>This is the profile page.</h1>
+<app-navbar></app-navbar>
+
+<ion-card>
+    <form (ngSubmit)="editFirstName()">
+        <ion-item>
+            <ion-label>First Name</ion-label>
+            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="firstname" name="firstname" placeholder="{{inorderuser.firstname}}"></ion-input>
+        
+        </ion-item>
+        <ion-item>
+            <ion-label>Last Name</ion-label>
+            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="lastname" name="lastname" placeholder="{{inorderuser.lastname}}"></ion-input>
+        
+        </ion-item>
+        <ion-item>
+            <ion-label>Username</ion-label>
+            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="username" name="username" placeholder="{{inorderuser.username}}"></ion-input>
+        
+        </ion-item>
+        <ion-item>
+            <ion-label>Password</ion-label>
+            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="password" name="password" placeholder="{{inorderuser.password}}"></ion-input>
+        
+        </ion-item>
+        <ion-row>
+            <ion-button type="submit" *ngIf="editPressed">Submit</ion-button>
+            <ion-button *ngIf="!editPressed" (click)="pressEdit()">Edit Info</ion-button>
+        </ion-row>
+    </form>
+</ion-card>

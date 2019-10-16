@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, RouterModule, Routes} from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -14,23 +14,24 @@ import { IonicRatingModule } from 'ionic4-rating';
 
 import { HttpClientModule } from '@angular/common/http';
 
-//Import angular-fusioncharts
-import { FusionChartsModule } from 'angular-fusioncharts';
+import { ChartsModule } from 'ng2-charts';
 
-// Import FusionCharts library
-import * as FusionCharts from 'fusioncharts';
-
-// Load FusionCharts Individual Charts
-import * as Charts from 'fusioncharts/fusioncharts.charts';
-import { NavbarModule } from './navbar/navbar.module';
+import { HomePage } from '../app/home/home.page';
+import { ProfileComponent } from './profile/profile.component';
 import { HomePageModule } from './home/home.module';
 import { ProfileModule } from './profile/profile.module';
 
-// Use fcRoot function to inject FusionCharts library, and the modules you want to use
-FusionChartsModule.fcRoot(FusionCharts, Charts)
 
-import { ChartsModule } from 'ng2-charts';
-
+//Routing information
+const appRoutes: Routes = [
+  { path: 'home', component: HomePage },
+  { path: 'profile', component: ProfileComponent },
+  { path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  // { path: '**', component: PageNotFoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -47,11 +48,13 @@ import { ChartsModule } from 'ng2-charts';
     BarRatingModule,
     IonicRatingModule,
     HttpClientModule,
-    FusionChartsModule,
-    NavbarModule,
+    ChartsModule,
     HomePageModule,
     ProfileModule,
-    ChartsModule
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true } // <-- debugging purposes only
+    )
   ],
   providers: [
     StatusBar,

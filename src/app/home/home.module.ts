@@ -37,7 +37,8 @@ import { ChartsModule } from 'ng2-charts';
     HomePage
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    HomePage
 ],
 })
 export class HomePageModule {}
