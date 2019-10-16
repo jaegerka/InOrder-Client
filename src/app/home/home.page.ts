@@ -37,7 +37,7 @@ export class HomePage {
 
   
   ngOnInit() {
-    this.presentModal();
+    // this.presentModal();
     this.getAllCurrentStates();
   }
 
@@ -92,18 +92,18 @@ export class HomePage {
   public lineChartColors:Array<any> = [
     { // blue
       backgroundColor: 'rgba(148,159,177,0.0)',
-      borderColor: '#3880FF',
-      pointBackgroundColor: '#3880FF',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: '#3880FF',
+      borderColor: '#7eaed3',
+      pointBackgroundColor: '#7eaed3',
+      pointBorderColor: '#7eaed3',
+      pointHoverBackgroundColor: '#7eaed3',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     },
-    { // red
+    { // mustard
       backgroundColor: 'rgba(77,83,96,0.0)',
-      borderColor: 'rgba(255, 61, 61, 1)',
-      pointBackgroundColor: 'rgba(255, 61, 61, 1)',
-      pointBorderColor: '#fff',
-      pointHoverBackgroundColor: 'rgba(255, 61, 61, 1)',
+      borderColor: '#e1ad01',
+      pointBackgroundColor: '#e1ad01',
+      pointBorderColor: '#e1ad01',
+      pointHoverBackgroundColor: '#e1ad01',
       pointHoverBorderColor: 'rgba(77,83,96,1)'
     },
   ];

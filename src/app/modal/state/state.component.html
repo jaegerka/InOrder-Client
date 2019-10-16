@@ -9,31 +9,22 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content class="ion-padding">
-  
+  <ion-card>
     <form #form="ngForm" (ngSubmit)="submitRating(form)">
-
         <h4 style="margin-left: 32%">Manic/Hypomanic</h4>
-      
-        <bar-rating name="manicrating" [(ngModel)]="manicrating" [(rate)]="manicrate" [max]="10" [theme]="'horizontal'" [showText]="'true'" 
+        <bar-rating name="manicrating" [(ngModel)]="manicrating" [(rate)]="manicrate" [max]="10" [theme]="'horizontal'"  
         [titles] = "['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']"></bar-rating>
-   
-      <h4 style="margin-left: 38%">Depressed</h4>
-     
-        <bar-rating name="depressedrating" [(ngModel)]="depressedrating" [(rate)]="depressedrate" [max]="10" [theme]="'horizontal'" [showText]="'true'" 
+        <h4 style="margin-left: 40%">Depressed</h4>
+        <bar-rating name="depressedrating" [(ngModel)]="depressedrating" [(rate)]="depressedrate" [max]="10" [theme]="'horizontal'" 
         [titles] = "['10%', '20%', '30%', '40%', '50%', '60%', '70%', '80%', '90%', '100%']"></bar-rating>
-     
     </form>
-
-    <br><br>
+  </ion-card>
 
     <ion-button class="infoButton" fill="outline" (click)="showInfo()">How do I choose?</ion-button>
-   
-    <br><br>
     <br>
-    <ion-button class="submitbutton" type="submit" (click)="submitRating(form)">Submit</ion-button>
+    <br>
+    <ion-button style="background-color: #7eaed3" class="submitbutton" type="submit" (click)="submitRating(form)">Submit</ion-button>
   
-
-  
-
 </ion-content>

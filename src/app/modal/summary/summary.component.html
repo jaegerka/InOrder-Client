@@ -17,15 +17,13 @@
 <ion-content class="ion-padding">
   
     <div>
-      <ion-button class="button">Manic percentage: {{this.manicpercentage}}0%</ion-button>
-      <ion-button class="button">Depressed percentage: {{this.depressedpercentage}}0%</ion-button>
-      <ion-button class="button">Environment: {{this.environment}}</ion-button>
-      <ion-button class="button">Comfort: {{this.comfort}}</ion-button>
-      <ion-button class="button">Behavior: {{this.behavior}}</ion-button>
-
+      <ion-button fill="outline" class="button" (click)="backToState()">Manic percentage: {{this.manicpercentage}}0%</ion-button>
+      <ion-button fill="outline" class="button" (click)="backToState()">Depressed percentage: {{this.depressedpercentage}}0%</ion-button>
+      <ion-button fill="outline" class="button" (click)="backToEnvironment()">Environment: {{this.environment}}</ion-button>
+      <ion-button fill="outline" class="button" (click)="backToComfort()">Comfort: {{this.comfort}}</ion-button>
+      <ion-button fill="outline" class="button" (click)="previousModal()">Behavior: {{this.behavior}}</ion-button>
       <br>
       <br>
-      
       <ion-button class="submitbutton" (click)="submitCurrentState()">Next</ion-button>
     </div>
   

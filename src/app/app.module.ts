@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomePage },
   { path: 'profile', component: ProfileComponent },
   { path: '',
-    redirectTo: '/home',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   // { path: '**', component: PageNotFoundComponent }

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
 import { modalController } from '@ionic/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
+import { BehaviorComponent } from '../behavior/behavior.component';
+import { StateComponent } from '../state/state.component';
+import { EnvironmentComponent } from '../environment/environment.component';
+import { ComfortComponent } from '../comfort/comfort.component';
 
 @Component({
   selector: 'app-summary',
@@ -17,7 +21,8 @@ export class SummaryComponent implements OnInit {
   comfort: any;
 
   constructor(private modalService: ModalServiceService,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private modalController: ModalController) { }
 
   ngOnInit() {
     this.modalService.manicpercentagebs.subscribe((data) => {
@@ -60,6 +65,41 @@ export class SummaryComponent implements OnInit {
     await info.present();
   }
 
+  dismissModal() {
+    this.modalController.dismiss();
+  }
 
+  previousModal() {
+    this.dismissModal();
+    this.showBehaviorModal();
+  }
+
+  async showBehaviorModal() {
+    const modal = await this.modalController.create({
+        component: BehaviorComponent
+    });
+    return await modal.present();
+  }
+
+  async backToState() {
+    const modal = await this.modalController.create({
+        component: StateComponent
+    });
+    return await modal.present();
+  }
+
+  async backToEnvironment() {
+    const modal = await this.modalController.create({
+        component: EnvironmentComponent
+    });
+    return await modal.present();
+  }
+
+  async backToComfort() {
+    const modal = await this.modalController.create({
+        component: ComfortComponent
+    });
+    return await modal.present();
+  }
 
 }
