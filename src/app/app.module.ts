@@ -17,15 +17,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 
 import { HomePage } from '../app/home/home.page';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent } from './modal/profile/profile.component';
 import { HomePageModule } from './home/home.module';
-import { ProfileModule } from './profile/profile.module';
+import { ProfileModule } from './modal/profile/profile.module';
+import { SignupComponent } from './modal/signup/signup.component';
+import { SignUpModule } from './modal/signup/signup.module';
 
 
 //Routing information
 const appRoutes: Routes = [
   { path: 'home', component: HomePage },
   { path: 'profile', component: ProfileComponent },
+  { path: 'signup', component: SignupComponent },
   { path: '',
     redirectTo: 'home',
     pathMatch: 'full'
@@ -51,6 +54,7 @@ const appRoutes: Routes = [
     ChartsModule,
     HomePageModule,
     ProfileModule,
+    SignUpModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

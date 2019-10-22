@@ -1,11 +1,14 @@
 <ion-toolbar>
  <ion-row>
   <ion-segment>
-      <ion-segment-button value="all" routerLink="/home" value="home">
+      <ion-segment-button value="home" routerLink="/home" routerDirection="root">
         Home
       </ion-segment-button>
-      <ion-segment-button value="favorites" routerLink="/profile" value="profile">
+      <ion-segment-button value="profile" (click)="showProfileModal()">
         Profile
+      </ion-segment-button>
+      <ion-segment-button value="signup" (click)="showSignUpModal()">
+        Sign Up
       </ion-segment-button>
     </ion-segment>
   </ion-row>

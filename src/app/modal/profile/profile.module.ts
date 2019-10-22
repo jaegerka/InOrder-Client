@@ -4,13 +4,11 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { StateModule } from '../modal/state/state.module';
+import { StateModule } from '../state/state.module';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import { Chart } from 'chart.js';
 
-import { ProfileComponent } from '../profile/profile.component';
-import { NavbarModule } from '../navbar/navbar.module';
-
+import { ProfileComponent } from './profile.component';
 
 @NgModule({
   imports: [
@@ -21,7 +19,6 @@ import { NavbarModule } from '../navbar/navbar.module';
     FormsModule,
     ReactiveFormsModule,
     FusionChartsModule,
-    NavbarModule,
   ],
   declarations: [
     ProfileComponent

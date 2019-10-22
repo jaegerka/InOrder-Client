@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InorderuserserviceService } from '../service/inorderuser/inorderuserservice.service';
+import { InorderuserserviceService } from '../../service/inorderuser/inorderuserservice.service';
+import { InOrderUser } from '../../model/inorderuser/inorderuser.model';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -8,10 +10,7 @@ import { InorderuserserviceService } from '../service/inorderuser/inorderuserser
 })
 export class ProfileComponent implements OnInit {
 
-  user: {
-    firstname: "Kaleigh",
-    lastname: "Jaeger"
-  }
+  currentInOrderUser: InOrderUser = new InOrderUser();
 
   inorderusers = [];
   inorderuser: any;
@@ -51,6 +50,17 @@ export class ProfileComponent implements OnInit {
 
   pressEdit() {
     this.editPressed = true;
+  }
+
+  editInOrderUser(form: NgForm) {
+    console.log(form);
+    console.log(form.controls.firstname.value);
+    this.currentInOrderUser.setFirstName(form.controls.firstname.value);
+    this.currentInOrderUser.setLastName(form.controls.lastname.value);
+    this.currentInOrderUser.setUsername(this.inorderuser.username);
+    this.currentInOrderUser.setPassword(form.controls.password.value);
+    console.log(this.currentInOrderUser);
+    this.inOrderUserService.updateInOrderUser(this.currentInOrderUser);
   }
 
 }

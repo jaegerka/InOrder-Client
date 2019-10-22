@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HomePage } from '../../app/home/home.page';
 import { NavbarService } from '../service/navbar/navbar.service';
+import { ModalController } from '@ionic/angular';
+import { SignupComponent } from '../modal/signup/signup.component';
+import { ProfileComponent } from '../modal/profile/profile.component';
 
 @Component({
   selector: 'app-navbar',
@@ -10,19 +13,29 @@ import { NavbarService } from '../service/navbar/navbar.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    // private navCtrl: NavController
-    private navbarService: NavbarService
+    private navbarService: NavbarService,
+    private modalController: ModalController
     ) { }
 
   ngOnInit() {}
 
-  routeToHome() {
-    this.navbarService.setPage('Home');
-    console.log("Routed to Home Page");
+  async showSignUpModal() {
+    const modal = await this.modalController.create({
+        component: SignupComponent,
+        componentProps: {
+          myParameter: true
+        }
+    });
+    return await modal.present();
   }
 
-  routeToProfile() {
-    this.navbarService.setPage('Profile');
-    console.log("Routed to Profile Page")
+  async showProfileModal() {
+    const modal = await this.modalController.create({
+        component: ProfileComponent,
+        componentProps: {
+          myParameter: true
+        }
+    });
+    return await modal.present();
   }
 }

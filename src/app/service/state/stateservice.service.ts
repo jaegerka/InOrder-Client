@@ -26,4 +26,11 @@ export class StateserviceService {
     return this.httpClient.get<Currentstate[]>('http://localhost:8080/currentstate/all')
       .map((data: any) => { return data })
   }
+
+  addInOrderUser(newCurrentState: Currentstate) {
+    console.log("Add In Order User Run");
+
+    return this.httpClient.post('http://localhost:8080/currentstate/add', newCurrentState)
+    
+  }
 }

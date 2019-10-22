@@ -1,7 +1,22 @@
-<app-navbar></app-navbar>
-
+<ion-header>
+        <ion-toolbar>
+          <ion-title style="text-align: center">Your Information:</ion-title>
+          <ion-buttons slot="primary">
+            <ion-button (click)="dismissModal()">
+              <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+</ion-header>
+  
+    
 <ion-card>
-    <form (ngSubmit)="editFirstName()">
+    <form #form="ngForm" (ngSubmit)="editInOrderUser(form)">
+        <ion-item>
+                <ion-label>Username</ion-label>
+                <ion-input disabled type="text" [(ngModel)]="username" name="username" placeholder="{{inorderuser.username}}"></ion-input>
+        </ion-item>
+        
         <ion-item>
             <ion-label>First Name</ion-label>
             <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="firstname" name="firstname" placeholder="{{inorderuser.firstname}}"></ion-input>
@@ -13,18 +28,13 @@
         
         </ion-item>
         <ion-item>
-            <ion-label>Username</ion-label>
-            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="username" name="username" placeholder="{{inorderuser.username}}"></ion-input>
-        
-        </ion-item>
-        <ion-item>
             <ion-label>Password</ion-label>
             <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="password" name="password" placeholder="{{inorderuser.password}}"></ion-input>
         
         </ion-item>
-        <ion-row>
+       
             <ion-button type="submit" *ngIf="editPressed">Submit</ion-button>
             <ion-button *ngIf="!editPressed" (click)="pressEdit()">Edit Info</ion-button>
-        </ion-row>
+       
     </form>
 </ion-card>
