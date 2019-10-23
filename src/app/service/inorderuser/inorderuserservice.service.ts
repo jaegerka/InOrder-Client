@@ -24,13 +24,17 @@ export class InorderuserserviceService {
   getUserByUsername() {
     return this.httpClient.get<InOrderUser>('http://localhost:8080/inorderuser/username')
       .map((data: any) => { return data })
-      .subscribe(data => console.log(data));
+      // .subscribe(data => console.log(data));
   }
 
   updateInOrderUser(currentInOrderUser: InOrderUser) {
     console.log("In Order User Service Update Method Called");
     console.log(currentInOrderUser);
     return this.httpClient.put('http://localhost:8080/inorderuser/update', currentInOrderUser)
+      .subscribe(
+        data => console.log(data),
+        err => console.log(err)
+      );
   }
 
   addInOrderUser(newInOrderUser: InOrderUser) {

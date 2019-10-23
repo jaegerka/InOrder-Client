@@ -1,12 +1,11 @@
 form {
-    // margin-left: 100%;
-    padding: 2%;
-    width: 80%;
     margin: auto;
+    margin-bottom: 4%;
 }
 
 ion-item {
-    margin-left: 10%;
+    margin: 2%;
+    width: 80%;
     margin: auto;
 }
 
@@ -15,18 +14,11 @@ ion-label {
 }
 
 ion-button {
-    margin: 0;
     margin: auto;
+    width: 100%;
 }
 
-ion-row {
-    margin: auto;
-    padding: 2.5%;
-}
-
-ion-card {
-    width: 80%;
-    height: auto;
-    margin: auto;
-    margin-top: 2.5%;
+p {
+    padding: 2%;
+    text-align: center;
 }

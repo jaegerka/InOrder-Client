@@ -10,31 +10,42 @@
 </ion-header>
   
     
-<ion-card>
-    <form #form="ngForm" (ngSubmit)="editInOrderUser(form)">
-        <ion-item>
-                <ion-label>Username</ion-label>
-                <ion-input disabled type="text" [(ngModel)]="username" name="username" placeholder="{{inorderuser.username}}"></ion-input>
-        </ion-item>
+<ion-content class="ion-padding">
+
+  <ion-card>
+      <form #form="ngForm" (ngSubmit)="editInOrderUser(form)">
+          <ion-item>
+                  <ion-label>Username</ion-label>
+                  <ion-input disabled type="text" [(ngModel)]="username" name="username" placeholder="{{inorderuser.username}}"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>First Name</ion-label>
+              <ion-input required [disabled]="!editPressed" type="text" [(ngModel)]="firstname" name="firstname" placeholder="{{inorderuser.firstname}}"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>Last Name</ion-label>
+              <ion-input required [disabled]="!editPressed" type="text" [(ngModel)]="lastname" name="lastname" placeholder="{{inorderuser.lastname}}"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>Password</ion-label>
+              <ion-input required [disabled]="!editPressed" type="password" [(ngModel)]="password" name="password" placeholder="{{inorderuser.password}}"></ion-input>
+          </ion-item>
+          
+          <p *ngIf="editPressed">
+            Type new information into the fields above.
+            <br>
+            Make sure all fields are filled before submitting.
+          </p>
+         
+
         
-        <ion-item>
-            <ion-label>First Name</ion-label>
-            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="firstname" name="firstname" placeholder="{{inorderuser.firstname}}"></ion-input>
-        
-        </ion-item>
-        <ion-item>
-            <ion-label>Last Name</ion-label>
-            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="lastname" name="lastname" placeholder="{{inorderuser.lastname}}"></ion-input>
-        
-        </ion-item>
-        <ion-item>
-            <ion-label>Password</ion-label>
-            <ion-input [disabled]="!editPressed" type="text" [(ngModel)]="password" name="password" placeholder="{{inorderuser.password}}"></ion-input>
-        
-        </ion-item>
-       
-            <ion-button type="submit" *ngIf="editPressed">Submit</ion-button>
-            <ion-button *ngIf="!editPressed" (click)="pressEdit()">Edit Info</ion-button>
-       
-    </form>
-</ion-card>
+      </form>
+
+  </ion-card>
+
+  <div>
+      <ion-button [disabled]="form.form.invalid" type="submit" *ngIf="editPressed" (click)="updateInOrderUser(form)">Submit</ion-button>
+      <ion-button *ngIf="!editPressed" (click)="pressEdit()">Edit Info</ion-button>
+  </div>
+
+</ion-content>
