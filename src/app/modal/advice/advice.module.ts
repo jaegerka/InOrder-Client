@@ -2,25 +2,22 @@ import { NgModule } from "@angular/core";
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BarRatingModule } from 'ngx-bar-rating';
-import { SignupComponent } from './signup.component';
+import { AdviceComponent } from '../advice/advice.component'; 
 
 
 @NgModule({
     declarations: [
-        SignupComponent
+        AdviceComponent
     ],
     imports: [
         IonicModule,
         CommonModule,
         FormsModule,
-        ReactiveFormsModule,
-        BarRatingModule,
-        
+        ReactiveFormsModule
     ],
     entryComponents: [
-       SignupComponent
+        AdviceComponent
     ]
 })
 
-export class SignUpModule {}
+export class AdviceModule {}

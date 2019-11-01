@@ -9,9 +9,6 @@ import { StateModule } from '../modal/state/state.module';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import { Chart } from 'chart.js';
 
-import { NavbarComponent } from '../navbar/navbar.component';
-import { NavbarModule } from '../navbar/navbar.module';
-
 import { ChartsModule } from 'ng2-charts';
 
 
@@ -24,8 +21,8 @@ import { ChartsModule } from 'ng2-charts';
     FormsModule,
     ReactiveFormsModule,
     FusionChartsModule,
-    NavbarModule,
     ChartsModule,
+    StateModule,
     RouterModule.forChild([
       {
         path: '',
@@ -37,7 +34,6 @@ import { ChartsModule } from 'ng2-charts';
     HomePage
   ],
   exports: [
-    NavbarComponent,
     HomePage
 ],
 })

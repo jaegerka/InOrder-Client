@@ -6,6 +6,7 @@ import { BehaviorComponent } from '../behavior/behavior.component';
 import { StateComponent } from '../state/state.component';
 import { EnvironmentComponent } from '../environment/environment.component';
 import { ComfortComponent } from '../comfort/comfort.component';
+import { AdviceComponent } from '../advice/advice.component';
 
 @Component({
   selector: 'app-summary',
@@ -53,16 +54,7 @@ export class SummaryComponent implements OnInit {
 
   submitCurrentState() {
     modalController.dismiss();
-    this.showConfirmation();
-  }
-
-  async showConfirmation() {
-    const info = await this.alertController.create({
-      header: 'Success',
-      message: 'Your current state has been successfully recorded',
-      buttons: ['Okay']
-    });
-    await info.present();
+    this.showAdviceModal();
   }
 
   dismissModal() {
@@ -98,6 +90,13 @@ export class SummaryComponent implements OnInit {
   async backToComfort() {
     const modal = await this.modalController.create({
         component: ComfortComponent
+    });
+    return await modal.present();
+  }
+
+  async showAdviceModal() {
+    const modal = await this.modalController.create({
+        component: AdviceComponent
     });
     return await modal.present();
   }

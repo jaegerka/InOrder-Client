@@ -24,9 +24,9 @@ export class ComfortComponent {
   }
 
   public form = [
-    { value: 'inside comfort zone'},
-    { value: 'slightly outside comfort zone'},
-    { value: 'too far outside comfort zone'}
+    { value: 'Inside comfort zone'},
+    { value: 'Slightly outside comfort zone'},
+    { value: 'Too far outside comfort zone'}
   ]
 
 

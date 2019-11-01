@@ -26,7 +26,7 @@ ion-content {
 
 .submitbutton {
     width: 95%; 
-    bottom: 0;
+    // bottom: 0;
     margin: auto;
 }
 
@@ -36,7 +36,8 @@ ion-content {
 }
 
 h4 {
-    text-align: left;
+    text-align: center;
+    margin: auto;
 }
 
 ion-card {

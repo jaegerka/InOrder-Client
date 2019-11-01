@@ -24,9 +24,9 @@ export class EnvironmentComponent {
   }
 
   public form = [
-    { value: 'safe'},
-    { value: 'triggering'},
-    { value: 'toxic'}
+    { value: 'Safe'},
+    { value: 'Triggering'},
+    { value: 'Toxic'}
   ]
 
 

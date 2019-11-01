@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { IonicRatingModule } from 'ionic4-rating';
 import { SummaryComponent } from './summary.component';
+import { AdviceComponent } from '../advice/advice.component';
+import { AdviceModule } from '../advice/advice.module';
 
 
 @NgModule({
@@ -17,10 +19,12 @@ import { SummaryComponent } from './summary.component';
         FormsModule,
         ReactiveFormsModule,
         BarRatingModule,
-        IonicRatingModule
+        IonicRatingModule,
+        AdviceModule
     ],
     entryComponents: [
-        SummaryComponent
+        SummaryComponent,
+        AdviceComponent
     ]
 })
 

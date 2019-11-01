@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center">Current state advice: </ion-title>
+      <ion-buttons slot="primary">
+        <ion-button (click)="dismissModal()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+    <div>
+      <ion-item *ngFor="let entry of depressed">
+        <ion-label>{{entry.value}}</ion-label>
+        <ion-checkbox slot="end"></ion-checkbox>
+      </ion-item>
+    </div>
+
+    <br>
+  
+    <ion-button (click)="dismissModal()">Done</ion-button>
+
+  </ion-content>
