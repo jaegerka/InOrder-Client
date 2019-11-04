@@ -10,6 +10,8 @@ import { FusionChartsModule } from 'angular-fusioncharts';
 import { Chart } from 'chart.js';
 
 import { ChartsModule } from 'ng2-charts';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { NavbarModule } from '../navbar/navbar.module';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { ChartsModule } from 'ng2-charts';
     FusionChartsModule,
     ChartsModule,
     StateModule,
+    NavbarModule,
     RouterModule.forChild([
       {
         path: '',

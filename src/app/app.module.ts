@@ -18,17 +18,22 @@ import { ChartsModule } from 'ng2-charts';
 
 import { HomePage } from '../app/home/home.page';
 import { HomePageModule } from './home/home.module';
+import { ToolsComponent } from './core/tools/tools.component';
+import { ToolsModule } from './core/tools/tools.module';
+import { NavbarModule } from './navbar/navbar.module';
+import { SettingsComponent } from './core/settings/settings.component';
+import { SettingsModule } from './core/settings/settings.module';
 
 
 //Routing information
 const appRoutes: Routes = [
-  // { path: 'home', component: HomePage },
-  // { path: 'profile', component: ProfileComponent },
-  // { path: 'signup', component: SignupComponent },
-  // { path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full'
-  // },
+  { path: 'home', component: HomePage },
+  { path: 'tools', component: ToolsComponent },
+  { path: 'settings', component: SettingsComponent },
+  { path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   // { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -49,6 +54,9 @@ const appRoutes: Routes = [
     HttpClientModule,
     ChartsModule,
     HomePageModule,
+    ToolsModule,
+    NavbarModule,
+    SettingsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

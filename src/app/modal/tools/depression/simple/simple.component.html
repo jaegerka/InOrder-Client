@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center">Simple Depression Tools</ion-title>
+      <ion-buttons slot="primary">
+        <ion-button (click)="dismissModal()">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content class="ion-padding">
+  
+    <div>
+        <ion-item *ngFor="let option of options">
+          <ion-label>{{option.value}}</ion-label>
+          <ion-checkbox slot="end"></ion-checkbox>
+        </ion-item>
+    </div>
+  
+</ion-content>
