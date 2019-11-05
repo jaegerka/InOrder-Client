@@ -4,8 +4,9 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToolsComponent } from './tools.component';
 import { NavbarModule } from 'src/app/navbar/navbar.module';
-import { SimpleComponent } from 'src/app/modal/tools/depression/simple/simple.component';
-import { SimpleDepressionModule } from 'src/app/modal/tools/depression/simple/simple.module';
+import { DepressionToolsModule } from 'src/app/modal/tools/depressiontools/depressiontools.module';
+import { DepressionComponent } from 'src/app/modal/tools/depressiontools/depressiontools.component';
+import { ManicToolsModule } from 'src/app/modal/tools/manictools/manictools.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { SimpleDepressionModule } from 'src/app/modal/tools/depression/simple/si
     FormsModule,
     ReactiveFormsModule,
     NavbarModule,
-    SimpleDepressionModule
+    DepressionToolsModule,
+    ManicToolsModule
   ],
   declarations: [
     ToolsComponent
@@ -23,8 +25,8 @@ import { SimpleDepressionModule } from 'src/app/modal/tools/depression/simple/si
   exports: [
     ToolsComponent
 ],
-entryComponents: [
-  SimpleComponent
-]
+  entryComponents: [
+    DepressionComponent
+  ]
 })
 export class ToolsModule {}

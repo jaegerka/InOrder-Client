@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
-import { SimpleComponent } from './simple.component';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { ManictoolsComponent } from './manictools.component';
 
 @NgModule({
     declarations: [
-        SimpleComponent
+        ManictoolsComponent
     ],
     imports: [
         IonicModule,
@@ -16,5 +16,5 @@ import { CommonModule } from '@angular/common';
     ]
 })
 
-export class SimpleDepressionModule {}
+export class ManicToolsModule {}
 

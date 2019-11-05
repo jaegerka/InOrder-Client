@@ -6,16 +6,16 @@
 
 <ion-card id="depressionTools">
   <h2>Depression</h2>
-  <ion-button (click)="showDSimple()" class="button">Simple Tools</ion-button>
-  <ion-button (click)="showDStronger()" class="button">Stronger Tools</ion-button>
-  <ion-button (click)="showDExtreme()" class="button">Extreme Tools</ion-button>
+  <ion-button (click)="selectDepression('simple')" class="dbutton">Simple Tools</ion-button>
+  <ion-button (click)="selectDepression('stronger')" class="dbutton">Stronger Tools</ion-button>
+  <ion-button (click)="selectDepression('extreme')" class="dbutton">Extreme Tools</ion-button>
 </ion-card>
 
 <ion-card id="manicTools">
     <h2>Manic/Hypomanic</h2>
-    <ion-button (click)="showMSimple()" class="button">Simple Tools</ion-button>
-    <ion-button (click)="showMStronger()" class="button">Stronger Tools</ion-button>
-    <ion-button (click)="showMExtreme()" class="button">Extreme Tools</ion-button>
+    <ion-button (click)="selectManic('simple')" class="mbutton">Simple Tools</ion-button>
+    <ion-button (click)="selectManic('stronger')" class="mbutton">Stronger Tools</ion-button>
+    <ion-button (click)="selectManic('extreme')" class="mbutton">Extreme Tools</ion-button>
 </ion-card>
 
 </ion-content>
