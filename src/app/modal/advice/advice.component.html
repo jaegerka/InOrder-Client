@@ -12,14 +12,18 @@
 <ion-content class="ion-padding">
   
     <div>
-      <ion-item *ngFor="let entry of depressed">
-        <ion-label>{{entry.value}}</ion-label>
-        <ion-checkbox slot="end"></ion-checkbox>
-      </ion-item>
+        <ion-label>Depression Level Suggestion:</ion-label>
+        <ion-button (click)="takeToDepressedTools()">{{depressed}} Depression Tools</ion-button>
+    </div>
+
+    <br><br>
+
+    <div>
+        <ion-label>Manic/Hypomanic Level Suggestion</ion-label>
+        <ion-button (click)="takeToManicTools()">{{manic}} Manic/Hypomanic Tools</ion-button>
     </div>
 
     <br>
-  
-    <ion-button (click)="dismissModal()">Done</ion-button>
+
 
   </ion-content>

@@ -12,6 +12,9 @@ export class DepressionComponent implements OnInit {
   selected = [];
   select: String;
 
+  selected2 = [];
+  select2: String;
+
   simpletools = [
     { value: 'Go on a walk' },
     { value: 'Spend time with friends' },

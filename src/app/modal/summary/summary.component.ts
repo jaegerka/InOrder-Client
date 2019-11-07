@@ -7,6 +7,7 @@ import { StateComponent } from '../state/state.component';
 import { EnvironmentComponent } from '../environment/environment.component';
 import { ComfortComponent } from '../comfort/comfort.component';
 import { AdviceComponent } from '../advice/advice.component';
+import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service';
 
 @Component({
   selector: 'app-summary',
@@ -20,9 +21,11 @@ export class SummaryComponent implements OnInit {
   environment: any;
   behavior: any;
   comfort: any;
+  depression: String;
+  manic: String;
 
   constructor(private modalService: ModalServiceService,
-    private alertController: AlertController,
+    private toolsService: ToolsserviceService,
     private modalController: ModalController) { }
 
   ngOnInit() {
@@ -54,6 +57,25 @@ export class SummaryComponent implements OnInit {
 
   submitCurrentState() {
     modalController.dismiss();
+    if (this.depressedpercentage <= 4) {
+      this.depression = 'Simple';
+    }
+    else if (this.depressedpercentage >= 5 && this.depressedpercentage <= 8) {
+      this.depression = 'Stronger';
+    } else {
+      this.depression = 'Extreme';
+    }
+
+    if (this.manicpercentage <= 4) {
+      this.manic = 'Simple';
+    }
+    else if (this.manicpercentage >= 5 && this.depressedpercentage <= 8) {
+      this.manic = 'Stronger';
+    } else {
+      this.manic = 'Extreme';
+    }
+
+    this.toolsService.setAdvice(this.depression, this.manic);
     this.showAdviceModal();
   }
 
