@@ -10,6 +10,7 @@ import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service'
 export class DepressionComponent implements OnInit {
 
   selected = [];
+  select: String;
 
   simpletools = [
     { value: 'Go on a walk' },
@@ -68,9 +69,10 @@ export class DepressionComponent implements OnInit {
   }
 
   setSelected(select: String) {
-    if (select == 'simple') {
+    this.select = select;
+    if (select == 'Simple') {
       this.selected = this.simpletools;
-    } else if (select == 'stronger') {
+    } else if (select == 'Stronger') {
       this.selected = this.strongertools;
     } else {
       this.selected = this.extremetools;

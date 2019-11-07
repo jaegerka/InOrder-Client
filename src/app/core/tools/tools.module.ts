@@ -7,6 +7,7 @@ import { NavbarModule } from 'src/app/navbar/navbar.module';
 import { DepressionToolsModule } from 'src/app/modal/tools/depressiontools/depressiontools.module';
 import { DepressionComponent } from 'src/app/modal/tools/depressiontools/depressiontools.component';
 import { ManicToolsModule } from 'src/app/modal/tools/manictools/manictools.module';
+import { ManictoolsComponent } from 'src/app/modal/tools/manictools/manictools.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ManicToolsModule } from 'src/app/modal/tools/manictools/manictools.modu
     ToolsComponent
 ],
   entryComponents: [
-    DepressionComponent
+    DepressionComponent,
+    ManictoolsComponent
   ]
 })
 export class ToolsModule {}
