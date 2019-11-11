@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
-import { Currentstate } from '../../model/currentstate'
+import { Currentstate } from '../../model/currentstate/currentstate'
 
 import { Observable } from 'rxjs';
 import 'rxjs';

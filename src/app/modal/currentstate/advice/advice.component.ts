@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service';
-import { DepressionComponent } from '../tools/depressiontools/depressiontools.component';
-import { ManictoolsComponent } from '../tools/manictools/manictools.component';
+import { DepressionComponent } from '../../tools/depressiontools/depressiontools.component';
+import { ManictoolsComponent } from '../../tools/manictools/manictools.component';
 
 @Component({
   selector: 'app-advice',

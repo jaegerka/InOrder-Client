@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
-import { StateModule } from '../modal/state/state.module';
+import { StateModule } from '../modal/currentstate/state/state.module';
 import { FusionChartsModule } from 'angular-fusioncharts';
 import { Chart } from 'chart.js';
 

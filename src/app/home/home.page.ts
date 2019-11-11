@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController } from '@ionic/angular';
-import { StateComponent } from '../modal/state/state.component'
+import { StateComponent } from '../modal/currentstate/state/state.component'
 import { StateserviceService } from '../service/state/stateservice.service';
 import { NavbarService } from '../service/navbar/navbar.service';
-import { Currentstate } from '../model/currentstate';
+import { Currentstate } from '../model/currentstate/currentstate';
 
 
 

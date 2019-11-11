@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { StateComponent } from '../modal/state/state.component';
+import { StateComponent } from '../modal/currentstate/state/state.component';
 
 @Component({
   selector: 'app-navbar',

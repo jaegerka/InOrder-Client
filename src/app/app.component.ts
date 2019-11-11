@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Platform, ModalController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { StateComponent } from '../app/modal/state/state.component';
+import { StateComponent } from './modal/currentstate/state/state.component';
 
 @Component({
   selector: 'app-root',
