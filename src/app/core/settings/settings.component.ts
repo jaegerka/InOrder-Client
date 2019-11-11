@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { FreqaskedquestionsComponent } from 'src/app/modal/settings/freqaskedquestions/freqaskedquestions.component';
+import { AboutusComponent } from 'src/app/modal/settings/aboutus/aboutus.component';
 
 @Component({
   selector: 'app-settings',
@@ -25,4 +26,12 @@ export class SettingsComponent implements OnInit {
     })
     return await modal.present();
   }
+
+  async showAboutUs() {
+    const modal = await this.modalController.create({
+      component: AboutusComponent
+    })
+    return await modal.present();
+  }
+  
 }
