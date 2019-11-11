@@ -6,25 +6,20 @@
         </ion-toolbar>
     </ion-header>
     
-    <ion-list>
-      <ion-item>
-          <ion-label>Daily Reminders</ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-label>My Tools</ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-label>Accounting for Time</ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-label>Initial Set Up</ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-label>About Us</ion-label>
-      </ion-item>
-      <ion-item>
-          <ion-label>FAQs</ion-label>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+    
+        <ion-button>Daily Reminders</ion-button>
+
+        <ion-button>My Tools</ion-button>
+     
+        <ion-button>Accounting for Time</ion-button>
+    
+        <ion-button>Initial Set up</ion-button>
+      
+        <ion-button>About us</ion-button>
+     
+        <ion-button full (click)="showFAQs()">Frequently Asked Questions</ion-button>
+       
+    </ion-card>
     
     </ion-content>

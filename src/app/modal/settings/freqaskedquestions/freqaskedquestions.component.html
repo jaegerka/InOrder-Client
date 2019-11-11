@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center">Frequently Asked Questions </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+<ion-list>
+  <ion-item *ngFor="let entry of FAQs">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+          <ion-title size="large">
+              {{entry.question}}
+            </ion-title>
+            <ion-textarea>
+              Here is the answer to the above question.
+            </ion-textarea>
+      </ion-toolbar>
+    </ion-header>
+  </ion-item>
+</ion-list>
+
+</ion-content>

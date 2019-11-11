@@ -3,8 +3,17 @@ ion-content {
     margin: auto;
 }
 
-ion-list {
+ion-card {
+    padding: 2%;
     width: 90%;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 2%;
+}
+
+ion-button {
+    text-align: center;
+    margin: auto;
+    width: 90%;
+    height: 50px;
+    margin-bottom: 1.5%;
 }
