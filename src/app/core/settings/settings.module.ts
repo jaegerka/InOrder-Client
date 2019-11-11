@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsComponent } from './settings.component';
 import { FreqaskedquestionsComponent } from 'src/app/modal/settings/freqaskedquestions/freqaskedquestions.component';
 import { FreqAskedQuestionsModule } from 'src/app/modal/settings/freqaskedquestions/freqaskedquestions.module';
+import { AboutusComponent } from 'src/app/modal/settings/aboutus/aboutus.component';
+import { AboutUsModule } from 'src/app/modal/settings/aboutus/aboutus.module';
 
 @NgModule({
   imports: [
@@ -13,7 +15,8 @@ import { FreqAskedQuestionsModule } from 'src/app/modal/settings/freqaskedquesti
     IonicModule,
     FormsModule,
     ReactiveFormsModule,
-    FreqAskedQuestionsModule
+    FreqAskedQuestionsModule,
+    AboutUsModule
   ],
   declarations: [
     SettingsComponent
@@ -22,7 +25,8 @@ import { FreqAskedQuestionsModule } from 'src/app/modal/settings/freqaskedquesti
     SettingsComponent
 ],
   entryComponents: [
-    FreqaskedquestionsComponent
+    FreqaskedquestionsComponent,
+    AboutusComponent
   ],
 })
 export class SettingsModule {}
