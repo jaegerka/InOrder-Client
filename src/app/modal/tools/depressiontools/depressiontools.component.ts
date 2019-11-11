@@ -12,8 +12,13 @@ export class DepressionComponent implements OnInit {
   selected = [];
   select: String;
 
-  selected2 = [];
-  select2: String;
+  favorites = [
+    { value: 'Go on a run'},
+    { value: 'Take a hot bath'},
+    { value: 'Get a massage'}
+  ]
+
+  showFavorites: boolean = true;
 
   simpletools = [
     { value: 'Go on a walk' },
@@ -81,6 +86,14 @@ export class DepressionComponent implements OnInit {
       this.selected = this.extremetools;
     }
     
+  }
+
+  toggleFavorites() {
+    if (this.showFavorites == true) {
+      this.showFavorites = false;
+    } else {
+      this.showFavorites = true;
+    }
   }
 
 

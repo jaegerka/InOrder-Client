@@ -12,6 +12,14 @@ export class ManictoolsComponent implements OnInit {
   selected = [];
   select: String;
 
+  favorites = [
+    { value: 'Do a five minute meditation'},
+    { value: 'Take 10 deep breaths'},
+    { value: 'Go on a mile walk'}
+  ]
+
+  showFavorites: boolean = true;
+
   simpletools = [
     { value: 'Go on a walk' },
     { value: 'Spend time with friends' },
@@ -75,6 +83,14 @@ export class ManictoolsComponent implements OnInit {
     } else {
       this.selected = this.extremetools;
     }
-    
   }
+
+  toggleFavorites() {
+    if (this.showFavorites == true) {
+      this.showFavorites = false;
+    } else {
+      this.showFavorites = true;
+    }
+  }
+
 }
