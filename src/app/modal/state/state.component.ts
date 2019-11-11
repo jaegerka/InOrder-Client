@@ -3,6 +3,7 @@ import { NavParams, ModalController, AlertController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { EnvironmentComponent } from '../environment/environment.component'
 import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-state',
@@ -21,7 +22,8 @@ export class StateComponent {
   constructor(private modalController: ModalController, 
     private navParams: NavParams,
     private alertController: AlertController,
-    private modalService: ModalServiceService) { }
+    private modalService: ModalServiceService,
+    private nativeStorage: NativeStorage) { }
 
   dismissModal() {
     this.modalController.dismiss();
@@ -67,5 +69,7 @@ export class StateComponent {
     });
     await info.present();
   }
+
+  
 
 }

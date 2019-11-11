@@ -8,6 +8,7 @@ import { EnvironmentComponent } from '../environment/environment.component';
 import { ComfortComponent } from '../comfort/comfort.component';
 import { AdviceComponent } from '../advice/advice.component';
 import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @Component({
   selector: 'app-summary',
@@ -26,7 +27,8 @@ export class SummaryComponent implements OnInit {
 
   constructor(private modalService: ModalServiceService,
     private toolsService: ToolsserviceService,
-    private modalController: ModalController) { }
+    private modalController: ModalController,
+    private nativeStorage: NativeStorage) { }
 
   ngOnInit() {
     this.modalService.manicpercentagebs.subscribe((data) => {
@@ -69,12 +71,14 @@ export class SummaryComponent implements OnInit {
     if (this.manicpercentage <= 4) {
       this.manic = 'Simple';
     }
-    else if (this.manicpercentage >= 5 && this.depressedpercentage <= 8) {
+    else if (this.manicpercentage >= 5 && this.manicpercentage <= 8) {
       this.manic = 'Stronger';
     } else {
       this.manic = 'Extreme';
     }
 
+    this.setCurrentState();
+    this.getCurrentState();
     this.toolsService.setAdvice(this.depression, this.manic);
     this.showAdviceModal();
   }
@@ -121,6 +125,29 @@ export class SummaryComponent implements OnInit {
         component: AdviceComponent
     });
     return await modal.present();
+  }
+
+  async setCurrentState() {
+    this.nativeStorage.setItem('currentState1',
+    { 
+      manicpercentage: this.manicpercentage,
+      depressedpercentage: this.depressedpercentage,
+      environment: this.environment,
+      behavior: this.behavior,
+      comfort: this.comfort,
+    })
+    .then(
+      (data) => console.log('Stored current state:', data),
+      error => console.error('Error storing current state:', error)
+    )
+  }
+
+  async getCurrentState() {
+    this.nativeStorage.getItem('currentState1')
+      .then(
+        data => console.log(data),
+        error => console.error(error)
+      )
   }
 
 }

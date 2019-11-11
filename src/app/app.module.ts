@@ -24,6 +24,8 @@ import { NavbarModule } from './navbar/navbar.module';
 import { SettingsComponent } from './core/settings/settings.component';
 import { SettingsModule } from './core/settings/settings.module';
 
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+
 
 //Routing information
 const appRoutes: Routes = [
@@ -65,6 +67,7 @@ const appRoutes: Routes = [
   providers: [
     StatusBar,
     SplashScreen,
+    NativeStorage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

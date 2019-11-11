@@ -38,41 +38,24 @@ export class AdviceComponent implements OnInit {
 
   setDepressedAdvice(depressed: String) {
     this.depressed = depressed;
-    // if (depressed == 'Simple') {
-    //   this.depressedButton = depressed;
-    // } else if (depressed == 'Stronger') {
-    //   this.depressedButton = depressed;
-    // } else {
-    //   this.depressedButton = depressed;
-    // }
     console.log(this.depressedButton);
   }
 
     setManicAdvice(manic: String) {
       this.manic = manic;
-      // if (manic == 'Simple') {
-      //  this.manicButton = manic;
-      // } else if (manic == 'Stronger') {
-      //  this.manicButton = manic;
-      // } else {
-      //  this.manicButton = manic;
-      // }
       console.log(this.manicButton);
-    
   }
 
   takeToDepressedTools() {
     console.log(this.depressed);
     this.toolsService.setDepression(this.depressed);
     this.showDepressionModal();
-    // this.dismissModal();
   }
 
   takeToManicTools() {
     console.log(this.manic);
     this.toolsService.selectManic(this.manic);
     this.showManicModal();
-    // this.dismissModal();
   }
 
   async showDepressionModal() {
