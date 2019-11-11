@@ -11,6 +11,9 @@
 
 <ion-content class="ion-padding">
 
+    <ion-title *ngIf="showFavorites">Current Favorites</ion-title>
+    <ion-title *ngIf="!showFavorites">Other Tools</ion-title>
+
     <ion-row>
       <ion-col>
         <button [disabled]="showFavorites"(click)="toggleFavorites()">Current Favorites</button>
@@ -19,16 +22,14 @@
         <button [disabled]="!showFavorites" (click)="toggleFavorites()">Other Tools</button>
       </ion-col>
     </ion-row>
-    <br>
+    
   <div *ngIf="showFavorites">
-      <ion-title>Current Favorites</ion-title>
       <ion-item *ngFor="let option of favorites">
         <ion-label>{{option.value}}</ion-label>
         <ion-checkbox slot="end"></ion-checkbox>
       </ion-item>
   </div>
   <div *ngIf="!showFavorites">
-      <ion-title>Other Tools</ion-title>
       <ion-item *ngFor="let option of selected">
         <ion-label>{{option.value}}</ion-label>
         <ion-checkbox slot="end"></ion-checkbox>
