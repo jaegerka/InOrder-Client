@@ -7,6 +7,10 @@ import { FreqaskedquestionsComponent } from 'src/app/modal/settings/freqaskedque
 import { FreqAskedQuestionsModule } from 'src/app/modal/settings/freqaskedquestions/freqaskedquestions.module';
 import { AboutusComponent } from 'src/app/modal/settings/aboutus/aboutus.component';
 import { AboutUsModule } from 'src/app/modal/settings/aboutus/aboutus.module';
+import { DailyRemindersModule } from 'src/app/modal/settings/dailyreminders/dailyreminders.module';
+import { DailyremindersComponent } from 'src/app/modal/settings/dailyreminders/dailyreminders.component';
+import { MytoolsComponent } from 'src/app/modal/settings/mytools/mytools.component';
+import { MyToolsModule } from 'src/app/modal/settings/mytools/mytools.module';
 
 @NgModule({
   imports: [
@@ -16,7 +20,9 @@ import { AboutUsModule } from 'src/app/modal/settings/aboutus/aboutus.module';
     FormsModule,
     ReactiveFormsModule,
     FreqAskedQuestionsModule,
-    AboutUsModule
+    AboutUsModule,
+    DailyRemindersModule,
+    MyToolsModule
   ],
   declarations: [
     SettingsComponent
@@ -26,7 +32,9 @@ import { AboutUsModule } from 'src/app/modal/settings/aboutus/aboutus.module';
 ],
   entryComponents: [
     FreqaskedquestionsComponent,
-    AboutusComponent
+    AboutusComponent,
+    DailyremindersComponent,
+    MytoolsComponent
   ],
 })
 export class SettingsModule {}
