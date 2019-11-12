@@ -4,6 +4,8 @@ import { FreqaskedquestionsComponent } from 'src/app/modal/settings/freqaskedque
 import { AboutusComponent } from 'src/app/modal/settings/aboutus/aboutus.component';
 import { DailyremindersComponent } from 'src/app/modal/settings/dailyreminders/dailyreminders.component';
 import { MytoolsComponent } from 'src/app/modal/settings/mytools/mytools.component';
+import { AccountingfortimeComponent } from 'src/app/modal/settings/accountingfortime/accountingfortime.component';
+import { InitialsetupComponent } from 'src/app/modal/settings/initialsetup/initialsetup.component';
 
 @Component({
   selector: 'app-settings',
@@ -46,6 +48,20 @@ export class SettingsComponent implements OnInit {
   async showMyTools() {
     const modal = await this.modalController.create({
       component: MytoolsComponent
+    })
+    return await modal.present();
+  }
+
+  async showAccountingForTime() {
+    const modal = await this.modalController.create({
+      component: AccountingfortimeComponent
+    })
+    return await modal.present();
+  }
+
+  async showInitialSetup() {
+    const modal = await this.modalController.create({
+      component: InitialsetupComponent
     })
     return await modal.present();
   }
