@@ -26,6 +26,8 @@ import { SettingsModule } from './core/settings/settings.module';
 
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
+import { IonicStorageModule } from '@ionic/storage';
+
 
 //Routing information
 const appRoutes: Routes = [
@@ -59,6 +61,7 @@ const appRoutes: Routes = [
     ToolsModule,
     NavbarModule,
     SettingsModule,
+    IonicStorageModule.forRoot(),
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only

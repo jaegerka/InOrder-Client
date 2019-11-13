@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { DepressionComponent } from './depressiontools.component';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -9,7 +10,8 @@ import { CommonModule } from '@angular/common';
     ],
     imports: [
         IonicModule,
-        CommonModule
+        CommonModule,
+        FormsModule
     ],
     exports: [
         
