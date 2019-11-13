@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController, Platform } from '@ionic/angular';
 import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service';
+import { Tool, StorageService } from 'src/app/service/storage/storage.service';
 
 @Component({
   selector: 'app-manictools',
@@ -12,11 +13,9 @@ export class ManictoolsComponent implements OnInit {
   selected = [];
   select: String;
 
-  favorites = [
-    { value: 'Do a five minute meditation'},
-    { value: 'Take 10 deep breaths'},
-    { value: 'Go on a mile walk'}
-  ]
+  tools: Tool[] = [];
+
+  newTool: Tool = <Tool>{};
 
   showFavorites: boolean = true;
 
@@ -59,9 +58,16 @@ export class ManictoolsComponent implements OnInit {
     { value: 'Find specific professional support' },
   ]
 
-  constructor (
+  constructor(
     private modalController: ModalController,
-    private toolsService: ToolsserviceService) { }
+    private toolsService: ToolsserviceService,
+    private storageService: StorageService,
+    private toastController: ToastController,
+    private platform: Platform) {
+      this.platform.ready().then(() => {
+        this.loadTools();
+      })
+     }
 
   ngOnInit() {
     this.toolsService.selectbs.subscribe((data) => {
@@ -91,6 +97,43 @@ export class ManictoolsComponent implements OnInit {
     } else {
       this.showFavorites = true;
     }
+  }
+
+  loadTools() {
+    this.storageService.getTools()
+      .then(tools => {
+        console.log(tools);
+        this.tools = tools;
+      })
+  }
+
+  addTool() {
+    this.newTool.modified = Date.now();
+    this.newTool.id = Date.now();
+
+    this.storageService.addTool(this.newTool)
+      .then(tool => {
+        console.log(tool);
+        this.newTool = <Tool>{};
+        this.showToast('New tool added!');
+        this.loadTools();
+      })
+  }
+
+  deleteTool(tool: Tool) {
+    this.storageService.deleteTool(tool.id)
+      .then(tool => {
+        this.showToast('Tool removed from Favorites');
+        this.loadTools();
+      })
+  } 
+
+  async showToast(message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    })
+    toast.present();
   }
 
 }

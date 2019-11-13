@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, ToastController, Platform } from '@ionic/angular';
 import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service';
+import { Tool, StorageService } from 'src/app/service/storage/storage.service';
 
 @Component({
   selector: 'app-depressiontools',
@@ -9,23 +10,22 @@ import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service'
 })
 export class DepressionComponent implements OnInit {
 
+  name = "star-outline";
   selected = [];
   select: String;
 
-  favorites = [
-    { value: 'Go on a run'},
-    { value: 'Take a hot bath'},
-    { value: 'Get a massage'}
-  ]
+  tools: Tool[] = [];
+
+  newTool: Tool = <Tool>{};
 
   showFavorites: boolean = true;
 
   simpletools = [
-    { value: 'Go on a walk' },
-    { value: 'Spend time with friends' },
-    { value: 'Meditate for 10 minutes' },
-    { value: 'Drink a coffee' },
-    { value: 'Take an exercise class' },
+    { value: 'Go on a walk', favorite: 'star'},
+    { value: 'Spend time with friends', favorite: 'star' },
+    { value: 'Meditate for 10 minutes', favorite: 'star' },
+    { value: 'Drink a coffee', favorite: 'star-outline' },
+    { value: 'Take an exercise class', favorite: 'star-outline' },
   ]
 
   strongertools = [
@@ -57,20 +57,23 @@ export class DepressionComponent implements OnInit {
     { value: 'Find specific professional support' },
   ]
 
-
-
   constructor(
     private modalController: ModalController,
-    private toolsService: ToolsserviceService) { }
+    private toolsService: ToolsserviceService,
+    private storageService: StorageService,
+    private toastController: ToastController,
+    private platform: Platform) {
+      this.platform.ready().then(() => {
+        this.loadTools();
+      })
+     }
 
   ngOnInit() {
     this.toolsService.selectbs.subscribe((data) => {
       console.log(data);
       this.setSelected(data);
     })
-    
   }
-
   
   dismissModal() {
     this.modalController.dismiss();
@@ -85,7 +88,6 @@ export class DepressionComponent implements OnInit {
     } else {
       this.selected = this.extremetools;
     }
-    
   }
 
   toggleFavorites() {
@@ -96,5 +98,40 @@ export class DepressionComponent implements OnInit {
     }
   }
 
+  loadTools() {
+    this.storageService.getTools()
+      .then(tools => {
+        console.log(tools);
+        this.tools = tools;
+      })
+  }
 
+  addTool() {
+    this.newTool.modified = Date.now();
+    this.newTool.id = Date.now();
+
+    this.storageService.addTool(this.newTool)
+      .then(tool => {
+        console.log(tool);
+        this.newTool = <Tool>{};
+        this.showToast('New tool added!');
+        this.loadTools();
+      })
+  }
+
+  deleteTool(tool: Tool) {
+    this.storageService.deleteTool(tool.id)
+      .then(tool => {
+        this.showToast('Tool removed from Favorites');
+        this.loadTools();
+      })
+  } 
+
+  async showToast(message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    })
+    toast.present();
+  }
 }
