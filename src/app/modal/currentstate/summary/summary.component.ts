@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
 import { modalController } from '@ionic/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, ToastController } from '@ionic/angular';
 import { BehaviorComponent } from '../behavior/behavior.component';
 import { StateComponent } from '../state/state.component';
 import { EnvironmentComponent } from '../environment/environment.component';
@@ -9,6 +9,8 @@ import { ComfortComponent } from '../comfort/comfort.component';
 import { AdviceComponent } from '../advice/advice.component';
 import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { StorageService } from 'src/app/service/storage/storage.service';
+import { Currentstate } from 'src/app/model/currentstate/currentstate';
 
 @Component({
   selector: 'app-summary',
@@ -25,10 +27,14 @@ export class SummaryComponent implements OnInit {
   depression: String;
   manic: String;
 
+  newCurrentState: Currentstate = <Currentstate>{};
+
   constructor(private modalService: ModalServiceService,
     private toolsService: ToolsserviceService,
+    private storageService: StorageService,
     private modalController: ModalController,
-    private nativeStorage: NativeStorage) { }
+    private nativeStorage: NativeStorage,
+    private toastController: ToastController) { }
 
   ngOnInit() {
     this.modalService.manicpercentagebs.subscribe((data) => {
@@ -78,7 +84,7 @@ export class SummaryComponent implements OnInit {
     }
 
     this.setCurrentState();
-    this.getCurrentState();
+    // this.getCurrentState();
     this.toolsService.setAdvice(this.depression, this.manic);
     this.showAdviceModal();
   }
@@ -128,18 +134,23 @@ export class SummaryComponent implements OnInit {
   }
 
   async setCurrentState() {
-    this.nativeStorage.setItem('currentState1',
-    { 
-      manicpercentage: this.manicpercentage,
-      depressedpercentage: this.depressedpercentage,
-      environment: this.environment,
-      behavior: this.behavior,
-      comfort: this.comfort,
-    })
-    .then(
-      (data) => console.log('Stored current state:', data),
-      error => console.error('Error storing current state:', error)
-    )
+
+    this.newCurrentState.id = Date.now();
+    this.newCurrentState.depressedpercentage = this.depressedpercentage;
+    this.newCurrentState.manicpercentage = this.manicpercentage;
+    this.newCurrentState.behavior = this.behavior;
+    this.newCurrentState.comfort = this.comfort;
+    this.newCurrentState.environment = this.environment;
+    this.newCurrentState.date = Date.now();
+    console.log(this.newCurrentState);
+
+    this.storageService.addCurrentState(this.newCurrentState)
+      .then(newCurrentState => {
+        console.log(newCurrentState);
+        this.newCurrentState = <Currentstate>{};
+        this.showToast('New Current State added!');
+        // this.loadCurrentStates();
+      })
   }
 
   async getCurrentState() {
@@ -148,6 +159,14 @@ export class SummaryComponent implements OnInit {
         data => console.log(data),
         error => console.error(error)
       )
+  }
+
+  async showToast(message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    })
+    toast.present();
   }
 
 }
