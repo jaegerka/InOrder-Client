@@ -13,6 +13,11 @@ import { ChartsModule } from 'ng2-charts';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NavbarModule } from '../navbar/navbar.module';
 
+import { MatTableModule } from '@angular/material/table';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   imports: [
@@ -26,6 +31,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     ChartsModule,
     StateModule,
     NavbarModule,
+    MatTableModule,
+    NgbModule,
     RouterModule.forChild([
       {
         path: '',

@@ -11,10 +11,10 @@ td {
     text-align: center;
 }
 
-#table {
+table {
     width: 90%;
     margin: auto;
-    // border: 1;
+    border: 10px;
 }
 
 ion-content {
@@ -40,19 +40,4 @@ p {
     font-size: 10px;
     text-align: center;
     margin: auto;
-}
-
-ion-row {
-    border: thin solid black;
-    height: 30%;
-}
-
-ion-grid {
-    // --ion-grid-padding: 2px;
-    margin: 1%;
-    margin: auto;
-}
-
-ion-col {
-    border: thin solid black;
 }

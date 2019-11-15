@@ -27,6 +27,7 @@ import { SettingsModule } from './core/settings/settings.module';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 //Routing information
@@ -65,7 +66,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
-    )
+    ),
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
