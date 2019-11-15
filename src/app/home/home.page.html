@@ -7,93 +7,54 @@
   </ion-header>
       
 
-  <div>
-      <div id="chart" class="row" *ngIf="graphview">
-        <div class="col-md-12">
-          <div style="display: block;">
-          <canvas baseChart width="100" height="50"
-                      [datasets]="lineChartData"
-                      [labels]="lineChartLabels"
-                      [options]="lineChartOptions"
-                      [colors]="lineChartColors"
-                      [legend]="lineChartLegend"
-                      [chartType]="lineChartType"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-          </div>
-        </div>
+<div>
+  <div id="chart" class="row" *ngIf="graphview">
+    <div class="col-md-12">
+      <div style="display: block;">
+      <canvas baseChart width="100" height="50"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
       </div>
-      <div id="table" class="row">
-          <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <div>
-                    <p>Date</p>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <p>Depressed (%)</p>
-                  </div>
-                </ion-col>
-                <ion-col>
-                  <div>
-                    <p>Manic (%)</p>
-                  </div>
-                </ion-col>
-                <ion-col>
-                    <div>
-                      <p>Environment</p>
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                    <div>
-                      <p>Behavior</p>
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                    <div>
-                      <p>Comfort</p>
-                    </div>
-                  </ion-col>
-              </ion-row>
-              <ion-row *ngFor="let currentstate of currentStates">
-                  <ion-col>
-                    <div>
-                      <p>{{currentstate.date | date: 'MM/dd/yyyy'}}</p>
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                    <div>
-                      <p>{{currentstate.depressedpercentage}}0%</p>
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                    <div>
-                      <p>{{currentstate.manicpercentage}}0%</p>
-                    </div>
-                  </ion-col>
-                  <ion-col>
-                      <div>
-                        <p>{{currentstate.environment}}</p>
-                      </div>
-                    </ion-col>
-                    <ion-col>
-                      <div>
-                        <p>{{currentstate.behavior}}</p>
-                      </div>
-                    </ion-col>
-                    <ion-col>
-                      <div>
-                        <p>{{currentstate.comfort}}</p>
-                      </div>
-                    </ion-col>
-                </ion-row>
-                <ion-row *ngIf="currentStates.length == 0">
-                  <p style="padding: 2.5%;">No Information to be displayed.</p>
-                </ion-row>
-            </ion-grid>
-      </div>
+    </div>
   </div>
+
+<div>
+  <table class="table table-bordered">
+    <thead>
+      <th>Date</th>
+      <th>Depressed %</th>
+      <th>Manic %</th>
+      <th>Environment</th>
+      <th>Behavior</th>
+      <th>Comfort</th>
+    </thead>
+      <tr *ngFor="let currentstate of currentStates">
+        <td>{{currentstate.date | date: 'MM/dd/yyyy'}}</td>
+        <td>{{currentstate.depressedpercentage}}0%</td>
+        <td>{{currentstate.manicpercentage}}0%</td>
+        <td>{{currentstate.environment}}</td>
+        <td>{{currentstate.behavior}}</td>
+        <td>{{currentstate.comfort}}</td>
+      </tr>
+      <tr *ngIf="currentStates.length == 0">
+          <p style="padding: 2.5%;">No Information to be displayed.</p>
+      </tr>
+      <tfoot class="grey lighten-5 w-100">
+        <tr>
+          <td colspan="4">
+           <ngb-pagination [(page)]="page" [pageSize]="10" [collectionSize]="currentStates.length"></ngb-pagination>
+          </td>
+        </tr>
+      </tfoot>
+  </table>
+</div>
+
+</div>
 
 </ion-content>

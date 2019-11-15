@@ -6,6 +6,7 @@ import { NavbarService } from '../service/navbar/navbar.service';
 import { Currentstate } from '../model/currentstate/currentstate';
 import { StorageService } from '../service/storage/storage.service';
 import { DatePipe } from '@angular/common';
+import { MatTableModule } from '@angular/material/table';
 
 
 @Component({
