@@ -17,15 +17,17 @@
     <ion-title *ngIf="!showFavorites">Other Tools</ion-title>
   </div>
 
-    <ion-row>
-      <ion-col>
-        <button [disabled]="showFavorites"(click)="toggleFavorites()">Current Favorites</button>
-      </ion-col>
-      <ion-col>
-        <button [disabled]="!showFavorites" (click)="toggleFavorites()">All Tools</button>
-      </ion-col>
-    </ion-row>
-    
+
+  <ion-row>
+    <ion-col>
+      <ion-button [disabled]="showFavorites"(click)="toggleFavorites()">Current Favorites</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button [disabled]="!showFavorites" (click)="toggleFavorites()">All Tools</ion-button>
+    </ion-col>
+  </ion-row>
+   
+  <ion-card>
     <div *ngIf="showFavorites">
       <div id="favoritesList" > 
         <ion-item-sliding *ngFor="let tool of tools">
@@ -46,20 +48,26 @@
     
           </ion-item-sliding>
         </div>
+      </div>
+    </ion-card>
 
-          <ion-item id="addTool">
-            <ion-label disabled>Add a new favorite:</ion-label>
-            <ion-input placeholder="i.e. Read a book" [(ngModel)]="newTool.title"></ion-input>
-            <ion-button (click)="addTool()">Submit</ion-button>
-          </ion-item>
+  <ion-card *ngIf="showFavorites">
+    <ion-item id="addTool">
+      <ion-label disabled>Add a new favorite:</ion-label>
+      <ion-input placeholder="i.e. Read a book" [(ngModel)]="newTool.title"></ion-input>
+      <ion-button (click)="addTool()">Submit</ion-button>
+    </ion-item>
+  </ion-card>
 
-    </div>
-
-    <div *ngIf="!showFavorites">
-        <ion-item *ngFor="let option of selected">
-          <ion-label>{{option.value}}</ion-label>
-          <ion-checkbox slot="end"></ion-checkbox>
-        </ion-item>
-    </div>
+  
+  
+<ion-card>
+  <div *ngIf="!showFavorites">
+      <ion-item *ngFor="let option of selected">
+        <ion-label>{{option.value}}</ion-label>
+        <ion-checkbox slot="end"></ion-checkbox>
+      </ion-item>
+  </div>
+</ion-card>
   
 </ion-content>

@@ -10,7 +10,8 @@ export interface Tool {
   favorite: Boolean
 }
 
-const TOOLS_KEY = 'my-favorites';
+const DEPRESSION_TOOLS_KEY = 'my-depression-favorites';
+const MANIC_TOOLS_KEY = 'my-manic-favorites'
 const CURRENTSTATES_KEY= 'my-currentstates';
 
 @Injectable({
@@ -22,25 +23,26 @@ export class StorageService {
     private storage: Storage
   ) { }
 
-  //Create Tool
-  addTool(tool: Tool) {
-    return this.storage.get(TOOLS_KEY).then((tools: Tool[]) => {
+  //Create Depression Tool
+  addDepressionTool(tool: Tool) {
+    return this.storage.get(DEPRESSION_TOOLS_KEY).then((tools: Tool[]) => {
       if (tools) {
         tools.push(tool);
-        return this.storage.set(TOOLS_KEY, tools);
+        return this.storage.set(DEPRESSION_TOOLS_KEY, tools);
       } else {
-        return this.storage.set(TOOLS_KEY, [tool]);
+        return this.storage.set(DEPRESSION_TOOLS_KEY, [tool]);
       }
     });
   }
 
-  //Get Tools
-  getTools() {
-    return this.storage.get(TOOLS_KEY);
+  //Get Depression Tools
+  getDepressionTools() {
+    return this.storage.get(DEPRESSION_TOOLS_KEY);
   }
 
-  deleteTool(id: number): Promise<Tool> {
-    return this.storage.get(TOOLS_KEY)
+  //Delete Depresion Tool
+  deleteDepressionTool(id: number): Promise<Tool> {
+    return this.storage.get(DEPRESSION_TOOLS_KEY)
       .then((tools: Tool[]) => {
         if (!tools || tools.length === 0) {
           return null;
@@ -54,7 +56,45 @@ export class StorageService {
           }
         }
 
-        return this.storage.set(TOOLS_KEY, toKeep);
+        return this.storage.set(DEPRESSION_TOOLS_KEY, toKeep);
+      })
+  } 
+
+
+   //Create Manic Tool
+   addManicTool(tool: Tool) {
+    return this.storage.get(MANIC_TOOLS_KEY).then((tools: Tool[]) => {
+      if (tools) {
+        tools.push(tool);
+        return this.storage.set(MANIC_TOOLS_KEY, tools);
+      } else {
+        return this.storage.set(MANIC_TOOLS_KEY, [tool]);
+      }
+    });
+  }
+
+  //Get Manic Tools
+  getManicTools() {
+    return this.storage.get(MANIC_TOOLS_KEY);
+  }
+
+  //Delete Manic Tool
+  deleteManicTool(id: number): Promise<Tool> {
+    return this.storage.get(MANIC_TOOLS_KEY)
+      .then((tools: Tool[]) => {
+        if (!tools || tools.length === 0) {
+          return null;
+        }
+
+        let toKeep: Tool[] = [];
+
+        for (let tool of tools) {
+          if (tool.id !== id) {
+            toKeep.push(tool);
+          }
+        }
+
+        return this.storage.set(MANIC_TOOLS_KEY, toKeep);
       })
   } 
 
