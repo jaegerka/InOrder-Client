@@ -5,9 +5,7 @@ import { StateserviceService } from '../service/state/stateservice.service';
 import { NavbarService } from '../service/navbar/navbar.service';
 import { Currentstate } from '../model/currentstate/currentstate';
 import { StorageService } from '../service/storage/storage.service';
-
-// import { Date } from ''
-
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -36,7 +34,8 @@ export class HomePage {
     public navController: NavController,
     private stateService: StateserviceService,
     private navbarService: NavbarService,
-    private storageService: StorageService) {
+    private storageService: StorageService,
+    public datepipe: DatePipe) {
 
     }
 
@@ -54,8 +53,8 @@ export class HomePage {
           this.depressedPercentages.push(currentState.depressedpercentage)
           console.log(currentState.manicpercentage)
           this.manicPercentages.push(currentState.manicpercentage)
-          // console.log(currentState.date | Date: 'MM/dd/yyyy')
-          // this.manicPercentages.push(currentState.manicpercentage)
+          console.log(this.datepipe.transform(currentState.date, 'MM-dd-yy'))
+          this.currentStateDates.push(this.datepipe.transform(currentState.date, 'MM-dd-yy'))
         }
       })
   }

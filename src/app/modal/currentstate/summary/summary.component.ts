@@ -84,7 +84,6 @@ export class SummaryComponent implements OnInit {
     }
 
     this.setCurrentState();
-    // this.getCurrentState();
     this.toolsService.setAdvice(this.depression, this.manic);
     this.showAdviceModal();
   }
@@ -149,16 +148,16 @@ export class SummaryComponent implements OnInit {
         console.log(newCurrentState);
         this.newCurrentState = <Currentstate>{};
         this.showToast('New Current State added!');
-        // this.loadCurrentStates();
+        this.loadCurrentStates();
       })
   }
 
-  async getCurrentState() {
-    this.nativeStorage.getItem('currentState1')
-      .then(
-        data => console.log(data),
-        error => console.error(error)
-      )
+  loadCurrentStates() {
+    this.storageService.getCurrentStates()
+      .then(currentstates => {
+        console.log(currentstates);
+        // this.tools = tools;
+      })
   }
 
   async showToast(message) {
