@@ -17,18 +17,12 @@ import { MatTableModule } from '@angular/material/table';
 
 
 export class HomePage {
-
-  profilePage: boolean = false;
-  page: any;
-  graphview: boolean = true;
-  tableview: boolean = false;
-
+  
+  graphView: boolean = true;
+  tableView: boolean = false;
   currentStates: any = [];
-  firstDP: any;
-
   depressedPercentages: any = [];
   manicPercentages: any = [];
-
   currentStateDates: any = [];
 
   constructor(public modalController: ModalController, 
@@ -61,12 +55,12 @@ export class HomePage {
   }
 
   switchView() {
-    if (this.graphview == true) {
-      this.graphview = false;
-      this.tableview = true;
+    if (this.graphView == true) {
+      this.graphView = false;
+      this.tableView = true;
     } else {
-      this.graphview = true;
-      this.tableview = false;
+      this.graphView = true;
+      this.tableView = false;
     }
   }
 
