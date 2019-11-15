@@ -34,6 +34,7 @@ export class AdviceComponent implements OnInit {
 
   dismissModal() {
     this.modalController.dismiss();
+    window.location.reload();
   }
 
   setDepressedAdvice(depressed: String) {

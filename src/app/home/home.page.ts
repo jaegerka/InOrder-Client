@@ -4,7 +4,8 @@ import { StateComponent } from '../modal/currentstate/state/state.component'
 import { StateserviceService } from '../service/state/stateservice.service';
 import { NavbarService } from '../service/navbar/navbar.service';
 import { Currentstate } from '../model/currentstate/currentstate';
-
+import { StorageService } from '../service/storage/storage.service';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -27,32 +28,35 @@ export class HomePage {
   depressedPercentages: any = [];
   manicPercentages: any = [];
 
+  currentStateDates: any = [];
+
   constructor(public modalController: ModalController, 
     public navController: NavController,
     private stateService: StateserviceService,
-    private navbarService: NavbarService) {
+    private navbarService: NavbarService,
+    private storageService: StorageService,
+    public datepipe: DatePipe) {
 
     }
 
-  
   ngOnInit() {
-    // this.presentModal();
     this.getAllCurrentStates();
   }
 
   getAllCurrentStates() {
-    this.stateService.getAllStates()
-      .subscribe((data) => {
-      console.log(data);
-      for (let currentstate of data) {
-        this.currentStates.push(currentstate);
-        this.depressedPercentages.push(currentstate.depressedpercentage);
-        this.manicPercentages.push(currentstate.manicpercentage);
-        console.log(this.depressedPercentages);
-        console.log(this.manicPercentages);
-      }
-      (error) => console.log(error)
-    });
+    this.storageService.getCurrentStates()
+      .then(currentStates => {
+        console.log(currentStates);
+        this.currentStates = currentStates;
+        for (let currentState of currentStates) {
+          console.log(currentState.depressedpercentage)
+          this.depressedPercentages.push(currentState.depressedpercentage)
+          console.log(currentState.manicpercentage)
+          this.manicPercentages.push(currentState.manicpercentage)
+          console.log(this.datepipe.transform(currentState.date, 'MM-dd-yy'))
+          this.currentStateDates.push(this.datepipe.transform(currentState.date, 'MM-dd-yy'))
+        }
+      })
   }
 
   switchView() {
@@ -80,7 +84,7 @@ export class HomePage {
     {data: this.depressedPercentages, label: 'Depressed'},
     {data: this.manicPercentages, label: 'Manic'},
   ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = this.currentStateDates;
   public lineChartOptions:any = {
     responsive: true
   };
@@ -108,7 +112,8 @@ export class HomePage {
   ];
   
   public randomize():void {
-    let _lineChartData:Array<any> = new Array(this.lineChartData.length);
+    let _lineChartData:Array<any> = new Array(this.currentStates.length)
+    // (this.lineChartData.length);
     for (let i = 0; i < this.lineChartData.length; i++) {
       _lineChartData[i] = {data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label};
       for (let j = 0; j < this.lineChartData[i].data.length; j++) {
