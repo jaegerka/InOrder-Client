@@ -100,7 +100,7 @@ export class ManictoolsComponent implements OnInit {
   }
 
   loadTools() {
-    this.storageService.getTools()
+    this.storageService.getManicTools()
       .then(tools => {
         console.log(tools);
         this.tools = tools;
@@ -111,7 +111,7 @@ export class ManictoolsComponent implements OnInit {
     this.newTool.modified = Date.now();
     this.newTool.id = Date.now();
 
-    this.storageService.addTool(this.newTool)
+    this.storageService.addManicTool(this.newTool)
       .then(tool => {
         console.log(tool);
         this.newTool = <Tool>{};
@@ -121,7 +121,7 @@ export class ManictoolsComponent implements OnInit {
   }
 
   deleteTool(tool: Tool) {
-    this.storageService.deleteTool(tool.id)
+    this.storageService.deleteManicTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();

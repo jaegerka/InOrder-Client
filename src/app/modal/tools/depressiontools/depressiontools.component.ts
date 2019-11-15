@@ -99,7 +99,7 @@ export class DepressionComponent implements OnInit {
   }
 
   loadTools() {
-    this.storageService.getTools()
+    this.storageService.getDepressionTools()
       .then(tools => {
         console.log(tools);
         this.tools = tools;
@@ -110,7 +110,7 @@ export class DepressionComponent implements OnInit {
     this.newTool.modified = Date.now();
     this.newTool.id = Date.now();
 
-    this.storageService.addTool(this.newTool)
+    this.storageService.addDepressionTool(this.newTool)
       .then(tool => {
         console.log(tool);
         this.newTool = <Tool>{};
@@ -120,7 +120,7 @@ export class DepressionComponent implements OnInit {
   }
 
   deleteTool(tool: Tool) {
-    this.storageService.deleteTool(tool.id)
+    this.storageService.deleteDepressionTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();
