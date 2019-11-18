@@ -41,8 +41,13 @@
           </ion-item-sliding>
         </div>
       </div>
-      <div>
-          <p *ngIf="showFavorites">Slide to left to remove</p>
+      <div *ngIf="showFavorites">
+        <div *ngIf="tools.length > 0">
+            <p>Slide to left to remove</p>
+        </div>
+        <div *ngIf="tools == null || !tools.length > 0">
+            <p id="noFavorites">No favorites yet.  Create your first below!</p>
+        </div>
       </div>
     </ion-card>
 

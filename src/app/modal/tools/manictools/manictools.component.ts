@@ -64,16 +64,15 @@ export class ManictoolsComponent implements OnInit {
     private storageService: StorageService,
     private toastController: ToastController,
     private platform: Platform) {
-      this.platform.ready().then(() => {
-        this.loadTools();
-      })
-     }
+    }
 
   ngOnInit() {
     this.toolsService.selectbs.subscribe((data) => {
       console.log(data);
       this.setSelected(data);
+      this.select = data;
     })
+    this.loadTools();
   }
 
   dismissModal() {
@@ -100,34 +99,84 @@ export class ManictoolsComponent implements OnInit {
   }
 
   loadTools() {
-    this.storageService.getManicTools()
+    console.log(this.select)
+    if (this.select == 'Simple') {
+      this.storageService.getSimpleManicTools()
       .then(tools => {
         console.log(tools);
         this.tools = tools;
       })
+    } else if (this.select == 'Stronger') {
+      this.storageService.getStrongerManicTools()
+      .then(tools => {
+        console.log(tools);
+        this.tools = tools;
+      })
+    } else {
+      this.storageService.getExtremeManicTools()
+      .then(tools => {
+        console.log(tools);
+        this.tools = tools;
+      })
+    }
   }
 
   addTool() {
+    console.log(this.select)
     this.newTool.modified = Date.now();
     this.newTool.id = Date.now();
 
-    this.storageService.addManicTool(this.newTool)
+    if (this.select == 'Simple') {
+      this.storageService.addSimpleManicTool(this.newTool)
       .then(tool => {
         console.log(tool);
         this.newTool = <Tool>{};
-        this.showToast('New tool added!');
+        this.showToast('New simple tool added!');
         this.loadTools();
       })
+    } else if (this.select == 'Stronger') {
+      this.storageService.addStrongerManicTool(this.newTool)
+      .then(tool => {
+        console.log(tool);
+        this.newTool = <Tool>{};
+        this.showToast('New stronger tool added!');
+        this.loadTools();
+      })
+    } else {
+      this.storageService.addExtremeManicTool(this.newTool)
+      .then(tool => {
+        console.log(tool);
+        this.newTool = <Tool>{};
+        this.showToast('New extreme tool added!');
+        this.loadTools();
+      })
+    }
+    
   }
 
   deleteTool(tool: Tool) {
-    this.storageService.deleteManicTool(tool.id)
+    console.log(this.select);
+    if (this.select == 'Simple') {
+      this.storageService.deleteSimpleManicTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();
       })
+    } else if (this.select == 'Stronger') {
+      this.storageService.deleteStrongerManicTool(tool.id)
+      .then(tool => {
+        this.showToast('Tool removed from Favorites');
+        this.loadTools();
+      })
+    } else {
+      this.storageService.deleteExtremeManicTool(tool.id)
+      .then(tool => {
+        this.showToast('Tool removed from Favorites');
+        this.loadTools();
+      })
+    }
+   
   } 
-
   async showToast(message) {
     const toast = await this.toastController.create({
       message: message,

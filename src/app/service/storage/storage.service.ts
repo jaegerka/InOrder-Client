@@ -10,8 +10,12 @@ export interface Tool {
   favorite: Boolean
 }
 
-const DEPRESSION_TOOLS_KEY = 'my-depression-favorites';
-const MANIC_TOOLS_KEY = 'my-manic-favorites'
+const SIMPLE_DEPRESSION_TOOLS_KEY = 'simple-depression-favorites';
+const SIMPLE_MANIC_TOOLS_KEY = 'simple-manic-favorites'
+const STRONGER_DEPRESSION_TOOLS_KEY = 'stronger-depression-favorites';
+const STRONGER_MANIC_TOOLS_KEY = 'stronger-manic-favorites'
+const EXTREME_DEPRESSION_TOOLS_KEY = 'extreme-depression-favorites';
+const EXTREME_MANIC_TOOLS_KEY = 'extreme-manic-favorites'
 const CURRENTSTATES_KEY= 'my-currentstates';
 
 @Injectable({
@@ -23,26 +27,23 @@ export class StorageService {
     private storage: Storage
   ) { }
 
-  //Create Depression Tool
-  addDepressionTool(tool: Tool) {
-    return this.storage.get(DEPRESSION_TOOLS_KEY).then((tools: Tool[]) => {
+  addSimpleDepressionTool(tool: Tool) {
+    return this.storage.get(SIMPLE_DEPRESSION_TOOLS_KEY).then((tools: Tool[]) => {
       if (tools) {
         tools.push(tool);
-        return this.storage.set(DEPRESSION_TOOLS_KEY, tools);
+        return this.storage.set(SIMPLE_DEPRESSION_TOOLS_KEY, tools);
       } else {
-        return this.storage.set(DEPRESSION_TOOLS_KEY, [tool]);
+        return this.storage.set(SIMPLE_DEPRESSION_TOOLS_KEY, [tool]);
       }
     });
   }
 
-  //Get Depression Tools
-  getDepressionTools() {
-    return this.storage.get(DEPRESSION_TOOLS_KEY);
+  getSimpleDepressionTools() {
+    return this.storage.get(SIMPLE_DEPRESSION_TOOLS_KEY);
   }
 
-  //Delete Depresion Tool
-  deleteDepressionTool(id: number): Promise<Tool> {
-    return this.storage.get(DEPRESSION_TOOLS_KEY)
+  deleteSimpleDepressionTool(id: number): Promise<Tool> {
+    return this.storage.get(SIMPLE_DEPRESSION_TOOLS_KEY)
       .then((tools: Tool[]) => {
         if (!tools || tools.length === 0) {
           return null;
@@ -56,31 +57,103 @@ export class StorageService {
           }
         }
 
-        return this.storage.set(DEPRESSION_TOOLS_KEY, toKeep);
+        return this.storage.set(SIMPLE_DEPRESSION_TOOLS_KEY, toKeep);
+      })
+  } 
+
+  //Stronger Depression Tools
+  addStrongerDepressionTool(tool: Tool) {
+    return this.storage.get(STRONGER_DEPRESSION_TOOLS_KEY).then((tools: Tool[]) => {
+      if (tools) {
+        tools.push(tool);
+        return this.storage.set(STRONGER_DEPRESSION_TOOLS_KEY, tools);
+      } else {
+        return this.storage.set(STRONGER_DEPRESSION_TOOLS_KEY, [tool]);
+      }
+    });
+  }
+  
+  getStrongerDepressionTools() {
+    return this.storage.get(STRONGER_DEPRESSION_TOOLS_KEY);
+  }
+
+  deleteStrongerDepressionTool(id: number): Promise<Tool> {
+    return this.storage.get(STRONGER_DEPRESSION_TOOLS_KEY)
+      .then((tools: Tool[]) => {
+        if (!tools || tools.length === 0) {
+          return null;
+        }
+
+        let toKeep: Tool[] = [];
+
+        for (let tool of tools) {
+          if (tool.id !== id) {
+            toKeep.push(tool);
+          }
+        }
+
+        return this.storage.set(STRONGER_DEPRESSION_TOOLS_KEY, toKeep);
+      })
+  } 
+
+  //Extreme Depression Tools
+  addExtremeDepressionTool(tool: Tool) {
+    return this.storage.get(EXTREME_DEPRESSION_TOOLS_KEY).then((tools: Tool[]) => {
+      if (tools) {
+        tools.push(tool);
+        return this.storage.set(EXTREME_DEPRESSION_TOOLS_KEY, tools);
+      } else {
+        return this.storage.set(EXTREME_DEPRESSION_TOOLS_KEY, [tool]);
+      }
+    });
+  }
+  
+  getExtremeDepressionTools() {
+    return this.storage.get(EXTREME_DEPRESSION_TOOLS_KEY);
+  }
+
+  deleteExtremeDepressionTool(id: number): Promise<Tool> {
+    return this.storage.get(EXTREME_DEPRESSION_TOOLS_KEY)
+      .then((tools: Tool[]) => {
+        if (!tools || tools.length === 0) {
+          return null;
+        }
+
+        let toKeep: Tool[] = [];
+
+        for (let tool of tools) {
+          if (tool.id !== id) {
+            toKeep.push(tool);
+          }
+        }
+
+        return this.storage.set(EXTREME_DEPRESSION_TOOLS_KEY, toKeep);
       })
   } 
 
 
-   //Create Manic Tool
-   addManicTool(tool: Tool) {
-    return this.storage.get(MANIC_TOOLS_KEY).then((tools: Tool[]) => {
+
+
+
+
+  //Simple Manic Tools
+   addSimpleManicTool(tool: Tool) {
+    return this.storage.get(SIMPLE_MANIC_TOOLS_KEY).then((tools: Tool[]) => {
       if (tools) {
         tools.push(tool);
-        return this.storage.set(MANIC_TOOLS_KEY, tools);
+        return this.storage.set(SIMPLE_MANIC_TOOLS_KEY, tools);
       } else {
-        return this.storage.set(MANIC_TOOLS_KEY, [tool]);
+        return this.storage.set(SIMPLE_MANIC_TOOLS_KEY, [tool]);
       }
     });
   }
 
-  //Get Manic Tools
-  getManicTools() {
-    return this.storage.get(MANIC_TOOLS_KEY);
+  getSimpleManicTools() {
+    return this.storage.get(SIMPLE_MANIC_TOOLS_KEY);
   }
 
-  //Delete Manic Tool
-  deleteManicTool(id: number): Promise<Tool> {
-    return this.storage.get(MANIC_TOOLS_KEY)
+  deleteSimpleManicTool(id: number): Promise<Tool> {
+    return this.storage.get(SIMPLE_MANIC_TOOLS_KEY)
       .then((tools: Tool[]) => {
         if (!tools || tools.length === 0) {
           return null;
@@ -94,7 +167,77 @@ export class StorageService {
           }
         }
 
-        return this.storage.set(MANIC_TOOLS_KEY, toKeep);
+        return this.storage.set(SIMPLE_MANIC_TOOLS_KEY, toKeep);
+      })
+  } 
+
+  //Stronger Manic Tools
+  addStrongerManicTool(tool: Tool) {
+    return this.storage.get(STRONGER_MANIC_TOOLS_KEY).then((tools: Tool[]) => {
+      if (tools) {
+        tools.push(tool);
+        return this.storage.set(STRONGER_MANIC_TOOLS_KEY, tools);
+      } else {
+        return this.storage.set(STRONGER_MANIC_TOOLS_KEY, [tool]);
+      }
+    });
+  }
+
+  getStrongerManicTools() {
+    return this.storage.get(STRONGER_MANIC_TOOLS_KEY);
+  }
+
+  deleteStrongerManicTool(id: number): Promise<Tool> {
+    return this.storage.get(STRONGER_MANIC_TOOLS_KEY)
+      .then((tools: Tool[]) => {
+        if (!tools || tools.length === 0) {
+          return null;
+        }
+
+        let toKeep: Tool[] = [];
+
+        for (let tool of tools) {
+          if (tool.id !== id) {
+            toKeep.push(tool);
+          }
+        }
+
+        return this.storage.set(STRONGER_MANIC_TOOLS_KEY, toKeep);
+      })
+  } 
+
+  //Extreme Manic Tools
+  addExtremeManicTool(tool: Tool) {
+    return this.storage.get(EXTREME_MANIC_TOOLS_KEY).then((tools: Tool[]) => {
+      if (tools) {
+        tools.push(tool);
+        return this.storage.set(EXTREME_MANIC_TOOLS_KEY, tools);
+      } else {
+        return this.storage.set(EXTREME_MANIC_TOOLS_KEY, [tool]);
+      }
+    });
+  }
+
+  getExtremeManicTools() {
+    return this.storage.get(EXTREME_MANIC_TOOLS_KEY);
+  }
+
+  deleteExtremeManicTool(id: number): Promise<Tool> {
+    return this.storage.get(EXTREME_MANIC_TOOLS_KEY)
+      .then((tools: Tool[]) => {
+        if (!tools || tools.length === 0) {
+          return null;
+        }
+
+        let toKeep: Tool[] = [];
+
+        for (let tool of tools) {
+          if (tool.id !== id) {
+            toKeep.push(tool);
+          }
+        }
+
+        return this.storage.set(EXTREME_MANIC_TOOLS_KEY, toKeep);
       })
   } 
 
