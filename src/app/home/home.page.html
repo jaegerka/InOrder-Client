@@ -35,7 +35,7 @@
       <th>Behavior</th>
       <th>Comfort</th>
     </thead>
-      <tr *ngFor="let currentstate of currentStates">
+      <tr *ngFor="let currentstate of currentStates | slice: (page-1) * pageSize">
         <td>{{currentstate.date | date: 'MM/dd/yyyy'}}</td>
         <td>{{currentstate.depressedpercentage}}0%</td>
         <td>{{currentstate.manicpercentage}}0%</td>
