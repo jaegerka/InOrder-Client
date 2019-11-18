@@ -11,13 +11,6 @@
 
 <ion-content class="ion-padding">
 
-  <div>
-    <ion-title *ngIf="showFavorites">Current Favorites</ion-title>
-    <p *ngIf="showFavorites">Slide to left to remove</p>
-    <ion-title *ngIf="!showFavorites">Other Tools</ion-title>
-  </div>
-
-
   <ion-row>
     <ion-col>
       <ion-button [disabled]="showFavorites"(click)="toggleFavorites()">Current Favorites</ion-button>
@@ -42,11 +35,18 @@
             </ion-item>
     
             <ion-item-options>
-              <!-- <ion-item-option color="secondary" (click)="updateTool(tool)">Update</ion-item-option> -->
               <ion-item-option color="danger" (click)="deleteTool(tool)">Remove</ion-item-option>
             </ion-item-options>
     
           </ion-item-sliding>
+        </div>
+      </div>
+      <div *ngIf="showFavorites">
+        <div *ngIf="tools.length > 0">
+            <p>Slide to left to remove</p>
+        </div>
+        <div *ngIf="tools == null || !tools.length > 0">
+            <p id="noFavorites">No favorites yet.  Create your first below!</p>
         </div>
       </div>
     </ion-card>

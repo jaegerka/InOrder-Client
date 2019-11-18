@@ -63,16 +63,17 @@ export class DepressionComponent implements OnInit {
     private storageService: StorageService,
     private toastController: ToastController,
     private platform: Platform) {
-      this.platform.ready().then(() => {
-        this.loadTools();
-      })
-     }
+    }
 
   ngOnInit() {
     this.toolsService.selectbs.subscribe((data) => {
       console.log(data);
+      this.select = data;
+      console.log(this.select);
       this.setSelected(data);
     })
+    this.loadTools();
+    console.log(this.tools.length)
   }
   
   dismissModal() {
@@ -99,32 +100,82 @@ export class DepressionComponent implements OnInit {
   }
 
   loadTools() {
-    this.storageService.getDepressionTools()
+    console.log(this.select)
+    if (this.select == 'Simple') {
+      this.storageService.getSimpleDepressionTools()
       .then(tools => {
         console.log(tools);
         this.tools = tools;
       })
+    } else if (this.select == 'Stronger') {
+      this.storageService.getStrongerDepressionTools()
+      .then(tools => {
+        console.log(tools);
+        this.tools = tools;
+      })
+    } else {
+      this.storageService.getExtremeDepressionTools()
+      .then(tools => {
+        console.log(tools);
+        this.tools = tools;
+      })
+    }
   }
 
   addTool() {
+    console.log(this.select)
     this.newTool.modified = Date.now();
     this.newTool.id = Date.now();
 
-    this.storageService.addDepressionTool(this.newTool)
+    if (this.select == 'Simple') {
+      this.storageService.addSimpleDepressionTool(this.newTool)
       .then(tool => {
         console.log(tool);
         this.newTool = <Tool>{};
-        this.showToast('New tool added!');
+        this.showToast('New simple tool added!');
         this.loadTools();
       })
+    } else if (this.select == 'Stronger') {
+      this.storageService.addStrongerDepressionTool(this.newTool)
+      .then(tool => {
+        console.log(tool);
+        this.newTool = <Tool>{};
+        this.showToast('New stronger tool added!');
+        this.loadTools();
+      })
+    } else {
+      this.storageService.addExtremeDepressionTool(this.newTool)
+      .then(tool => {
+        console.log(tool);
+        this.newTool = <Tool>{};
+        this.showToast('New extreme tool added!');
+        this.loadTools();
+      })
+    }
+    
   }
 
   deleteTool(tool: Tool) {
-    this.storageService.deleteDepressionTool(tool.id)
+    if (this.select == 'Simple') {
+      this.storageService.deleteSimpleManicTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();
       })
+    } else if (this.select == 'Stronger') {
+      this.storageService.deleteStrongerManicTool(tool.id)
+      .then(tool => {
+        this.showToast('Tool removed from Favorites');
+        this.loadTools();
+      })
+    } else {
+      this.storageService.deleteExtremeManicTool(tool.id)
+      .then(tool => {
+        this.showToast('Tool removed from Favorites');
+        this.loadTools();
+      })
+    }
+   
   } 
 
   async showToast(message) {

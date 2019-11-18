@@ -7,24 +7,25 @@
   </ion-header>
       
 
-<div>
-  <div id="chart" class="row" *ngIf="graphview">
-    <div class="col-md-12">
-      <div style="display: block;">
-      <canvas baseChart width="100" height="50"
-                  [datasets]="lineChartData"
-                  [labels]="lineChartLabels"
-                  [options]="lineChartOptions"
-                  [colors]="lineChartColors"
-                  [legend]="lineChartLegend"
-                  [chartType]="lineChartType"
-                  (chartHover)="chartHovered($event)"
-                  (chartClick)="chartClicked($event)"></canvas>
-      </div>
+
+<div id="chart" class="row" *ngIf="graphView">
+  <div class="col-md-12">
+    <div style="display: block;">
+    <canvas baseChart width="100" height="50"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
     </div>
   </div>
+</div>
 
-<div>
+
+<div *ngIf="tableView">
   <table class="table table-bordered">
     <thead>
       <th>Date</th>
@@ -47,14 +48,18 @@
       </tr>
       <tfoot class="grey lighten-5 w-100">
         <tr>
-          <td colspan="4">
-           <ngb-pagination [(page)]="page" [pageSize]="10" [collectionSize]="currentStates.length"></ngb-pagination>
+          <td colspan="6">
+           <ngb-pagination [(page)]="page" [pageSize]="5" [collectionSize]="currentStates.length"></ngb-pagination>
+            <p>Rotate phone to landscape for best view.</p>
           </td>
         </tr>
       </tfoot>
   </table>
 </div>
 
+<div id="toggleButtons">
+  <ion-button *ngIf="graphView" (click)="switchView()">Show Table</ion-button>
+  <ion-button *ngIf="tableView" (click)="switchView()">Show Graph</ion-button>
 </div>
 
 </ion-content>
