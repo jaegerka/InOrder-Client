@@ -32,12 +32,12 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #8CBBF7;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-shade: rgb(23, 95, 219);
+  --ion-color-primary-tint: rgb(94, 158, 243);
 
   /** secondary **/
   --ion-color-secondary: #0cd1e8;
@@ -102,4 +102,8 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  //background color
+  // --ion-background-color: #CCDBEE;
+  //  #99AFD7;
 }

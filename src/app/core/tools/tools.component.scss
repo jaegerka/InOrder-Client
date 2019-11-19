@@ -21,9 +21,14 @@ ion-card {
     margin: auto;
     padding: 1.5%;
     padding-bottom: 2.5%;
+    background-color: white;
 }
 
 h2 {
     margin-bottom: 2.5%;
     font-size: 20px;
+}
+
+.background {
+    --background: linear-gradient(#a1c4fd, #c2e9fb) !important;
 }

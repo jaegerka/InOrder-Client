@@ -8,6 +8,7 @@ ion-card {
     width: 90%;
     margin: auto;
     margin-top: 2%;
+    background-color: white;
 }
 
 ion-button {
@@ -16,4 +17,8 @@ ion-button {
     width: 90%;
     height: 50px;
     margin-bottom: 1.5%;
+}
+
+.background {
+    --background: linear-gradient(#a1c4fd, #c2e9fb) !important;
 }
