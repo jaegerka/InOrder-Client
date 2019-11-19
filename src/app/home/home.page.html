@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content class="background">
 
   <ion-header>
     <ion-toolbar>
@@ -7,7 +7,7 @@
   </ion-header>
       
 
-
+<ion-card>
 <div id="chart" class="row" *ngIf="graphView">
   <div class="col-md-12">
     <div style="display: block;">
@@ -43,8 +43,10 @@
         <td>{{currentstate.behavior}}</td>
         <td>{{currentstate.comfort}}</td>
       </tr>
-      <tr *ngIf="currentStates.length == 0">
-          <p style="padding: 2.5%;">No Information to be displayed.</p>
+      <tr *ngIf="!currentStates">
+          <td colspan="6">
+            <p id="noInfo" style="padding: 2.5%;">No Information to be displayed.</p>
+          </td>
       </tr>
       <tfoot class="grey lighten-5 w-100">
         <tr>
@@ -61,5 +63,7 @@
   <ion-button *ngIf="graphView" (click)="switchView()">Show Table</ion-button>
   <ion-button *ngIf="tableView" (click)="switchView()">Show Graph</ion-button>
 </div>
+
+</ion-card>
 
 </ion-content>

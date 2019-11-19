@@ -42,3 +42,19 @@ p {
     text-align: center;
     margin: auto;
 }
+
+ion-button {
+    margin-bottom: 2%;
+}
+
+.background {
+    --background: linear-gradient(#a1c4fd, #c2e9fb) !important;
+}
+
+ion-card {
+    --background: white;
+}
+
+#noInfo {
+    text-align: center;
+}
