@@ -65,7 +65,10 @@ export class SummaryComponent implements OnInit {
 
   submitCurrentState() {
     modalController.dismiss();
-    if (this.depressedpercentage <= 4) {
+    if (this.depressedpercentage == 0) {
+      this.depression = 'None';
+    }
+    else if (this.depressedpercentage > 0 && this.depressedpercentage <= 4) {
       this.depression = 'Simple';
     }
     else if (this.depressedpercentage >= 5 && this.depressedpercentage <= 8) {
@@ -74,7 +77,10 @@ export class SummaryComponent implements OnInit {
       this.depression = 'Extreme';
     }
 
-    if (this.manicpercentage <= 4) {
+    if (this.manicpercentage == 0) {
+      this.manic = 'None';
+    }
+    else if (this.manicpercentage > 0 && this.manicpercentage <= 4) {
       this.manic = 'Simple';
     }
     else if (this.manicpercentage >= 5 && this.manicpercentage <= 8) {

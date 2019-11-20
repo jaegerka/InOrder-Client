@@ -24,11 +24,19 @@ export class AdviceComponent implements OnInit {
   ngOnInit() {
     this.toolsService.depressedbs.subscribe((data) => {
       console.log(data);
+      if (data == 'None') {
+        console.log("No depression")
+      } else {
       this.setDepressedAdvice(data);
+      }
     })
     this.toolsService.manicbs.subscribe((data) => {
       console.log(data);
+      if (data == 'None') {
+        console.log("No mania")
+      } else {
       this.setManicAdvice(data);
+      }
     })
   }
 
