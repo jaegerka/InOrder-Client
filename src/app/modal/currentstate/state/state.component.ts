@@ -33,6 +33,12 @@ export class StateComponent {
     console.log(form.value)
     this.manicpercentage = form.value.manicrating;
     this.depressedpercentage = form.value.depressedrating;
+    if (form.value.manicrating == undefined) {
+      this.manicpercentage = 0;
+    }
+    if (form.value.depressedrating == undefined) {
+      this.depressedpercentage = 0;
+    }
     console.log(this.manicpercentage);
     console.log(this.depressedpercentage);
     this.modalService.setManicPercentage(this.manicpercentage);
@@ -64,7 +70,7 @@ export class StateComponent {
   async showInfo() {
     const info = await this.alertController.create({
       header: 'How do I choose?',
-      message: 'Here is the info to choose.',
+      message: 'Use the scales to describe your percentage of mania and depression. <br> <br> If at 0%, leave the scale blank.',
       buttons: ['Okay']
     });
     await info.present();
