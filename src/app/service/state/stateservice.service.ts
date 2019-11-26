@@ -27,10 +27,12 @@ export class StateserviceService {
       .map((data: any) => { return data })
   }
 
-  addInOrderUser(newCurrentState: Currentstate) {
-    console.log("Add In Order User Run");
+  addCurrentState(newCurrentState: Currentstate) {
+    console.log("Add Current State Run");
+    console.log(newCurrentState);
 
     return this.httpClient.post('http://localhost:8080/currentstate/add', newCurrentState)
+      .map((data: any) => { return data })
     
   }
 }

@@ -11,6 +11,7 @@ import { ToolsserviceService } from 'src/app/service/tools/toolsservice.service'
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { StorageService } from 'src/app/service/storage/storage.service';
 import { Currentstate } from 'src/app/model/currentstate/currentstate';
+import { StateserviceService } from 'src/app/service/state/stateservice.service';
 
 @Component({
   selector: 'app-summary',
@@ -34,7 +35,8 @@ export class SummaryComponent implements OnInit {
     private storageService: StorageService,
     private modalController: ModalController,
     private nativeStorage: NativeStorage,
-    private toastController: ToastController) { }
+    private toastController: ToastController,
+    private stateService: StateserviceService) { }
 
   ngOnInit() {
     this.modalService.manicpercentagebs.subscribe((data) => {
@@ -156,6 +158,8 @@ export class SummaryComponent implements OnInit {
         this.showToast('New Current State added!');
         this.loadCurrentStates();
       })
+
+      this.addCurrentStateToDatabase(this.newCurrentState);
   }
 
   loadCurrentStates() {
@@ -172,6 +176,11 @@ export class SummaryComponent implements OnInit {
       duration: 2000
     })
     toast.present();
+  }
+
+  addCurrentStateToDatabase(currentState: Currentstate) {
+    console.log("Sent new current state to database");
+    this.stateService.addCurrentState(currentState);
   }
 
 }
