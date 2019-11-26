@@ -15,12 +15,14 @@
   <ion-item *ngFor="let entry of FAQs">
     <ion-header collapse="condense">
       <ion-toolbar>
+        <div>
           <ion-title size="large">
-              {{entry.question}}
-            </ion-title>
-            <ion-textarea>
-              Here is the answer to the above question.
-            </ion-textarea>
+            {{entry.question}}
+          </ion-title>
+          <ion-textarea>
+            Here is the answer to the above question.
+          </ion-textarea>
+        </div>
       </ion-toolbar>
     </ion-header>
   </ion-item>

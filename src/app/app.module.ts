@@ -28,6 +28,7 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 
 //Routing information
@@ -73,6 +74,7 @@ const appRoutes: Routes = [
     StatusBar,
     SplashScreen,
     NativeStorage,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
