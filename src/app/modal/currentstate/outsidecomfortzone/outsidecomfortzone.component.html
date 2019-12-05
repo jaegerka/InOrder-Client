@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center">{{comfort}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="dismissModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div>
+    <p *ngIf="slightly">Here is some information about being slightly outside of your comfort zone.</p>
+    <p *ngIf="toofar">Here is some information about being too far outside of your comfort zone.</p>
+    <br><br>
+    <p id="exit">*To exit this modal, click the close button in the top right corner.*</p>
+  </div>
+
+
+</ion-content>

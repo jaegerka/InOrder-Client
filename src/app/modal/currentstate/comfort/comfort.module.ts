@@ -7,6 +7,8 @@ import { IonicRatingModule } from 'ionic4-rating';
 import { ComfortComponent } from '../comfort/comfort.component';
 import { BehaviorComponent } from '../behavior/behavior.component';
 import { BehaviorModule } from '../behavior/behavior.module';
+import { OutsidecomfortzoneComponent } from '../outsidecomfortzone/outsidecomfortzone.component';
+import { OutsideComfortZoneModule } from '../outsidecomfortzone/outsidecomfortzone.module';
 
 
 @NgModule({
@@ -20,11 +22,13 @@ import { BehaviorModule } from '../behavior/behavior.module';
         ReactiveFormsModule,
         BarRatingModule,
         IonicRatingModule,
-        BehaviorModule
+        BehaviorModule,
+        OutsideComfortZoneModule
     ],
     entryComponents: [
         ComfortComponent,
-        BehaviorComponent
+        BehaviorComponent,
+        OutsidecomfortzoneComponent
     ]
 })
 
