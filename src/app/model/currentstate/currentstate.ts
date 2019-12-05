@@ -1,7 +1,7 @@
 export class Currentstate {
 
-    id: number;
-    date: any;
+    // id: number;
+    // date: any;
     depressedpercentage: number;
     manicpercentage: number;
     environment: string;
@@ -9,9 +9,9 @@ export class Currentstate {
     behavior: string;
 
 
-    public CurrentState(id: number, date: any, depressedpercentage: number, manicpercentage: number, environment: string, comfort: string, behavior: string) {
-        this.id = id;
-        this.date = date;
+    public CurrentState(depressedpercentage: number, manicpercentage: number, environment: string, comfort: string, behavior: string) {
+        // this.id = id;
+        // this.date = date;
         this.depressedpercentage = depressedpercentage;
         this.manicpercentage = manicpercentage;
         this.environment = environment;

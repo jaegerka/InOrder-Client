@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 import { Currentstate } from '../../model/currentstate/currentstate'
 
-import { Observable } from 'rxjs';
 import 'rxjs';
 import 'rxjs/add/operator/map';
-import { map } from 'rxjs-compat/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +30,9 @@ export class StateserviceService {
     console.log(newCurrentState);
 
     return this.httpClient.post('http://localhost:8080/currentstate/add', newCurrentState)
-      .map((data: any) => { return data })
+      .subscribe(
+        err => console.log(err)
+    );
     
   }
 }

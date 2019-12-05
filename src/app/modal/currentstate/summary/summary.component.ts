@@ -142,13 +142,13 @@ export class SummaryComponent implements OnInit {
 
   async setCurrentState() {
 
-    this.newCurrentState.id = Date.now();
+    // this.newCurrentState.id = Date.now();
     this.newCurrentState.depressedpercentage = this.depressedpercentage;
     this.newCurrentState.manicpercentage = this.manicpercentage;
     this.newCurrentState.behavior = this.behavior;
     this.newCurrentState.comfort = this.comfort;
     this.newCurrentState.environment = this.environment;
-    this.newCurrentState.date = Date.now();
+    // this.newCurrentState.date = Date.now();
     console.log(this.newCurrentState);
 
     this.storageService.addCurrentState(this.newCurrentState)
