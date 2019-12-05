@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavParams, ModalController, AlertController } from '@ionic/angular';
+import { NavParams, ModalController, AlertController, IonFooter } from '@ionic/angular';
 import { BehaviorComponent } from '../behavior/behavior.component';
 import { EnvironmentComponent } from '../environment/environment.component';
 import { ModalServiceService } from 'src/app/service/modal/modalservice.service';
+import { OutsidecomfortzoneComponent } from '../outsidecomfortzone/outsidecomfortzone.component';
 
 @Component({
   selector: 'app-comfort',
@@ -41,7 +42,9 @@ export class ComfortComponent {
     this.comfort = this.form[1].value;
     this.comfortselected = true;
     console.log(this.comfort);
+    this.modalService.setComfort(this.comfort);
     this.nextModal();
+    this.showOutsideComfortZoneModal();
   }
 
   select2() {
@@ -49,9 +52,10 @@ export class ComfortComponent {
     this.comfortselected = true;
     console.log(this.comfort);
     this.nextModal();
+    this.showOutsideComfortZoneModal();
   }
 
-  nextModal() {
+  async nextModal() {
     this.modalService.setComfort(this.comfort);
     this.dismissModal();
     this.showBehaviorModal();
@@ -85,5 +89,11 @@ export class ComfortComponent {
     await info.present();
   }
 
+  async showOutsideComfortZoneModal() {
+    const modal = await this.modalController.create({
+        component: OutsidecomfortzoneComponent
+    });
+    return await modal.present();
+  }
 
 }

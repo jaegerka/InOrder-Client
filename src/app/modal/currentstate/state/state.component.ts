@@ -12,61 +12,68 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class StateComponent {
 
-  scale: boolean = false;
-  state: String;
-  selected: boolean = false;
   manicpercentage: any;
   depressedpercentage: any;
-  ratingsubmitted: boolean = false;
 
-  constructor(private modalController: ModalController, 
-    private navParams: NavParams,
+  constructor(
+    private modalController: ModalController, 
     private alertController: AlertController,
-    private modalService: ModalServiceService,
-    private nativeStorage: NativeStorage) { }
+    private modalService: ModalServiceService) { 
 
+    }
+
+  //Closes modal
   dismissModal() {
     this.modalController.dismiss();
   }
 
+  //Called when submit button is pressed
   submitRating(form: NgForm) {
+    //Log submitted values in the console
     console.log(form.value)
+
+    //Set manic and depressed percentages to form response values
     this.manicpercentage = form.value.manicrating;
     this.depressedpercentage = form.value.depressedrating;
+
+    //Set manic and/or depressed percentages to zero if no response
     if (form.value.manicrating == undefined) {
       this.manicpercentage = 0;
     }
     if (form.value.depressedrating == undefined) {
       this.depressedpercentage = 0;
     }
-    console.log(this.manicpercentage);
-    console.log(this.depressedpercentage);
+
+    //Log local manic and depressed percentages in the console
+    console.log("Manic percentage in state component: " + this.manicpercentage);
+    console.log("Depressed percentage in state component: " + this.depressedpercentage);
+
+    //Send manic and depressed percentages to service
     this.modalService.setManicPercentage(this.manicpercentage);
     this.modalService.setDepressedPercentage(this.depressedpercentage);
-    this.ratingsubmitted = true;
+
+    //Show next modal (environment modal)
     this.nextModal();
   }
 
-  backToState() {
-    this.selected = false;
-    this.ratingsubmitted = false;
-  }
-
+  //Called at the end of submit function
   nextModal() {
+    //Closes modal
     this.dismissModal();
+
+    //Causes next modal to appear
     this.showEnvironmentModal();
   }
 
+  //Shows environment modal
   async showEnvironmentModal() {
     const modal = await this.modalController.create({
         component: EnvironmentComponent,
-        componentProps: {
-          myParameter: true
-        }
     });
     return await modal.present();
   }
 
+  //Shows information on how to select current state
   async showInfo() {
     const info = await this.alertController.create({
       header: 'How do I choose?',
