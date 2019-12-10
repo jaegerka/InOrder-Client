@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Currentstate } from 'src/app/model/currentstate/currentstate';
-// import { BasicAuthenticator, CordovaEngine, Database, Function } from '@ionic/storage';
 
 export interface Tool {
   id: number,

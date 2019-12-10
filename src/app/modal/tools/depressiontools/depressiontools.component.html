@@ -25,8 +25,7 @@
       <div id="favoritesList" > 
         <ion-item-sliding *ngFor="let tool of tools">
             <ion-item>
-              <ion-checkbox slot="end"></ion-checkbox>
-              <ion-label text-wrap>
+              <ion-label>
                 <h3>{{tool.title}}</h3>
                 <ion-text color="secondary">
                   <p>{{tool.value}}</p>
@@ -65,9 +64,12 @@
   <div *ngIf="!showFavorites">
       <ion-item *ngFor="let option of selected">
         <ion-label>{{option.value}}</ion-label>
-        <ion-checkbox slot="end"></ion-checkbox>
+        <ion-input [(ngModel)]="newTool.title"></ion-input>
+        <button slot="end" (click)="addTool(option.value)">
+          <ion-icon *ngIf="option.favorite" name="star"></ion-icon>
+          <ion-icon *ngIf="!option.favorite" name="star-outline"></ion-icon>
+        </button>
       </ion-item>
   </div>
 </ion-card>
-  
 </ion-content>

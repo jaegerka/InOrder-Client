@@ -21,11 +21,11 @@ export class DepressionComponent implements OnInit {
   showFavorites: boolean = true;
 
   simpletools = [
-    { value: 'Go on a walk', favorite: 'star'},
-    { value: 'Spend time with friends', favorite: 'star' },
-    { value: 'Meditate for 10 minutes', favorite: 'star' },
-    { value: 'Drink a coffee', favorite: 'star-outline' },
-    { value: 'Take an exercise class', favorite: 'star-outline' },
+    { value: 'Go on a walk', favorite: false},
+    { value: 'Spend time with friends', favorite: false },
+    { value: 'Meditate for 10 minutes', favorite: false },
+    { value: 'Drink a coffee', favorite: false },
+    { value: 'Take an exercise class', favorite: false },
   ]
 
   strongertools = [
@@ -122,8 +122,13 @@ export class DepressionComponent implements OnInit {
     }
   }
 
-  addTool() {
+  addTool(value: any) {
     console.log(this.select)
+    console.log(value);
+
+    if (this.newTool.title == undefined) {
+      this.newTool.title = value;
+    }
     this.newTool.modified = Date.now();
     this.newTool.id = Date.now();
 
@@ -156,20 +161,24 @@ export class DepressionComponent implements OnInit {
   }
 
   deleteTool(tool: Tool) {
+    console.log(this.select);
     if (this.select == 'Simple') {
-      this.storageService.deleteSimpleManicTool(tool.id)
+      console.log("Deleted Simple Tool");
+      this.storageService.deleteSimpleDepressionTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();
       })
     } else if (this.select == 'Stronger') {
-      this.storageService.deleteStrongerManicTool(tool.id)
+      console.log("Deleted Stronger Tool");
+      this.storageService.deleteStrongerDepressionTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();
       })
     } else {
-      this.storageService.deleteExtremeManicTool(tool.id)
+      console.log("Deleted Extreme Tool");
+      this.storageService.deleteExtremeDepressionTool(tool.id)
       .then(tool => {
         this.showToast('Tool removed from Favorites');
         this.loadTools();
@@ -184,5 +193,15 @@ export class DepressionComponent implements OnInit {
       duration: 2000
     })
     toast.present();
+  }
+
+  addToFavorites(value: any) {
+    console.log(value.value);
+    for (var tool of this.simpletools) {
+      if (value.value == tool.value)
+        console.log(tool);
+        tool.favorite = true;
+        break;
+    }
   }
 }
